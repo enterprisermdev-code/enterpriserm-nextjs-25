@@ -34,3 +34,31 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Sanity Cloud Studio (No Embedded Studio)
+
+- Content is managed on Sanity Cloud Studio, not inside this Next.js app.
+	- Studio: `https://<yourstudio>.sanity.studio`
+	- Manage: `https://sanity.io/manage`
+- Next.js fetches content from Sanity via `@sanity/client`.
+
+### Structure
+- `sanity/client.ts`: Configured Sanity client using environment variables.
+- `sanity/queries.ts`: GROQ query strings for fetching data.
+
+### Required env vars (set in `.env.local`)
+```
+NEXT_PUBLIC_SANITY_PROJECT_ID=your_project_id
+NEXT_PUBLIC_SANITY_DATASET=production
+# Optional if dataset is private
+SANITY_API_READ_TOKEN=your_read_token
+SANITY_API_VERSION=2023-10-01
+```
+
+### Example usage
+```ts
+import { sanityClient } from "@/sanity/client";
+import { queries } from "@/sanity/queries";
+
+const posts = await sanityClient.fetch(queries.allPosts);
+```

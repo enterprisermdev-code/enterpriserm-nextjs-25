@@ -1,0 +1,79 @@
+// GROQ query strings for fetching content from Sanity Cloud
+
+export const queries = {
+  allPosts: `*[_type == "post"]|order(publishedAt desc){
+    _id,
+    title,
+    slug,
+    excerpt,
+    publishedAt,
+    mainImage{
+      asset->{
+        _id,
+        url
+      },
+      alt
+    },
+    author->{
+      _id,
+      name,
+      slug,
+      image{
+        asset->{
+          url
+        }
+      }
+    },
+    categories[]->{
+      _id,
+      title,
+      slug
+    }
+  }`,
+
+  postBySlug: `*[_type == "post" && slug.current == $slug][0]{
+    _id,
+    title,
+    slug,
+    excerpt,
+    publishedAt,
+    mainImage{
+      asset->{
+        _id,
+        url
+      },
+      alt
+    },
+    author->{
+      _id,
+      name,
+      slug,
+      image{
+        asset->{
+          url
+        }
+      }
+    },
+    categories[]->{
+      _id,
+      title,
+      slug
+    },
+    body,
+    seoTitle,
+    seoDescription,
+    focusKeyphrase,
+    seoKeywords,
+    noIndex,
+    canonicalUrl,
+    ogTitle,
+    ogDescription,
+    ogImage{
+      asset->{
+        url
+      },
+      alt
+    },
+    twitterCard
+  }`,
+} as const;
