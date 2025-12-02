@@ -17,7 +17,7 @@ import { WhyUsSection } from '@/components/why-us-section';
 export const metadata: Metadata = {
   title: 'Enterprise Risk Management | AI-Powered GRC Platform',
   description:
-    'Move beyond spreadsheets with a unified, AI-powered platform that identifies, assesses, and mitigates risks in real time. Empower teams with actionable insights, seamless collaboration, and complete regulatory compliance.',
+    'Move beyond spreadsheets with a unified, AI-powered platform that identifies, assesses, and mitigates risks in real time. Empower teams with actionable insights, seamless collaboration, and complete regulatory compliances.',
   keywords: [
     'Enterprise Risk Management',
     'ERM platform',
