@@ -36,36 +36,47 @@ export function Footer() {
           </div>
 
           {/* Center: Links columns */}
-          <div className="md:col-span-5 grid grid-cols-3 gap-6">
+          <div className="md:col-span-8 grid grid-cols-3 gap-8">
             <div>
-              <h4 className="text-sm text-gray-300 font-semibold mb-3">Support</h4>
+              <h4 className="text-xs text-gray-400 font-semibold uppercase tracking-wider mb-4">Product Solutions</h4>
               <ul className="space-y-2 text-gray-400 text-sm">
-                <li><Link href="#" className="hover:text-white">Help centre</Link></li>
-                <li><Link href="#" className="hover:text-white">Account information</Link></li>
-                <li><Link href="#" className="hover:text-white">About</Link></li>
-                <li><Link href="#" className="hover:text-white">Contact us</Link></li>
+                <li><Link href="#" className="hover:text-white">Enterprise GRC</Link></li>
+                <li><Link href="#" className="hover:text-white">Integrated Risk Management</Link></li>
+                <li><Link href="#" className="hover:text-white">Cybersecurity Risk Management</Link></li>
+                <li><Link href="#" className="hover:text-white">Corporate Compliance</Link></li>
+                <li><Link href="#" className="hover:text-white">Supplier Risk and Performance</Link></li>
+                <li><Link href="#" className="hover:text-white">DORA</Link></li>
+                <li><Link href="#" className="hover:text-white">UK SOX Compliance</Link></li>
+                <li><Link href="#" className="hover:text-white">Privacy Compliance</Link></li>
+                <li><Link href="#" className="hover:text-white">IDW PS 340 n.F.</Link></li>
               </ul>
             </div>
             <div>
-              <h4 className="text-sm text-gray-300 font-semibold mb-3">Help and Solution</h4>
+              <h4 className="text-xs text-gray-400 font-semibold uppercase tracking-wider mb-4">Frameworks</h4>
               <ul className="space-y-2 text-gray-400 text-sm">
-                <li><Link href="#" className="hover:text-white">Talk to support</Link></li>
-                <li><Link href="#" className="hover:text-white">Support docs</Link></li>
+                <li><Link href="#" className="hover:text-white">CCPA</Link></li>
+                <li><Link href="#" className="hover:text-white">CMMC</Link></li>
+                <li><Link href="#" className="hover:text-white">COSO</Link></li>
+                <li><Link href="#" className="hover:text-white">HIPAA</Link></li>
+                <li><Link href="#" className="hover:text-white">ISO</Link></li>
+                <li><Link href="#" className="hover:text-white">NIST</Link></li>
+                <li><Link href="#" className="hover:text-white">PCI DSS</Link></li>
               </ul>
             </div>
             <div>
-              <h4 className="text-sm text-gray-300 font-semibold mb-3">Product</h4>
+              <h4 className="text-xs text-gray-400 font-semibold uppercase tracking-wider mb-4">Industries</h4>
               <ul className="space-y-2 text-gray-400 text-sm">
-                <li><Link href="#" className="hover:text-white">Update</Link></li>
-                <li><Link href="#" className="hover:text-white">Security</Link></li>
-                <li><Link href="#" className="hover:text-white">Beta test</Link></li>
-                <li><Link href="#" className="hover:text-white">Pricing product</Link></li>
+                <li><Link href="#" className="hover:text-white">Banking and Financial Services</Link></li>
+                <li><Link href="#" className="hover:text-white">Energy</Link></li>
+                <li><Link href="#" className="hover:text-white">Healthcare</Link></li>
+                <li><Link href="#" className="hover:text-white">Insurance</Link></li>
+                <li><Link href="#" className="hover:text-white">Life Sciences</Link></li>
+                <li><Link href="#" className="hover:text-white">Technology</Link></li>
+                <li><Link href="#" className="hover:text-white">Telecom</Link></li>
+                <li><Link href="#" className="hover:text-white">Utilities</Link></li>
               </ul>
             </div>
           </div>
-
-          {/* Right spacer */}
-          <div className="md:col-span-3" />
         </div>
 
         {/* Bottom bar */}

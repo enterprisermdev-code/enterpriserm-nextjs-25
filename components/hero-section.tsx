@@ -32,7 +32,7 @@ export function HeroSection() {
           {/* Right Illustration */}
           <div className="relative flex items-center justify-center">
             <Image 
-              src="/customerdeve.svg" 
+              src="/homebannersideimage.svg" 
               alt="Team collaboration illustration" 
               width={350} 
               height={400}

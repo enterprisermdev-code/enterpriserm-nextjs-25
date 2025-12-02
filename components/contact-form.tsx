@@ -1,7 +1,7 @@
 "use client";
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
-import PhoneInput from 'react-phone-number-input';
+import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import '../app/contact/phone-input.css';
 
@@ -15,11 +15,63 @@ export function ContactForm() {
     message: '',
     interest: 'demo'
   });
+  const [result, setResult] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Add your form submission logic here
+    setLoading(true);
+    setResult('Sending...');
+
+    // Run native HTML5 validation first (required, email pattern, etc.)
+    const formEl = e.currentTarget;
+    if (!formEl.checkValidity()) {
+      formEl.reportValidity();
+      setLoading(false);
+      setResult('');
+      return;
+    }
+
+    // Extra validation for phone field using library util
+    if (!formData.phone || !isValidPhoneNumber(formData.phone)) {
+      setResult('Please enter a valid phone number.');
+      setLoading(false);
+      return;
+    }
+
+    const formDataToSubmit = new FormData(e.currentTarget);
+    formDataToSubmit.append('access_key', 'c8923a57-7de9-49ad-b037-de67fe9d32f6');
+    formDataToSubmit.append('subject', 'New contact form submission');
+    const composedName = `${formData.firstName} ${formData.lastName}`.trim();
+    if (composedName) formDataToSubmit.append('from_name', composedName);
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formDataToSubmit
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        setResult('Form Submitted Successfully');
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          company: '',
+          phone: '',
+          message: '',
+          interest: 'demo'
+        });
+        setTimeout(() => setResult(''), 5000);
+      } else {
+        setResult(data.message || 'Error');
+      }
+    } catch (error) {
+      setResult('Error');
+    }
+
+    setLoading(false);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -36,131 +88,107 @@ export function ContactForm() {
           {/* Contact Form */}
           <div>
             <h2 className="text-3xl font-bold text-gray-900 mb-6">One step ahead to connect with us</h2>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="firstName" className="block text-sm font-semibold text-gray-700 mb-2">
-                    First Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="firstName"
-                    name="firstName"
-                    required
-                    value={formData.firstName}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#120174] focus:ring-2 focus:ring-[#120174]/20 outline-none transition-all"
-                    placeholder="John"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="lastName" className="block text-sm font-semibold text-gray-700 mb-2">
-                    Last Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="lastName"
-                    name="lastName"
-                    required
-                    value={formData.lastName}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#120174] focus:ring-2 focus:ring-[#120174]/20 outline-none transition-all"
-                    placeholder="Doe"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
-                  Work Email *
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#120174] focus:ring-2 focus:ring-[#120174]/20 outline-none transition-all"
-                  placeholder="john.doe@company.com"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="company" className="block text-sm font-semibold text-gray-700 mb-2">
-                  Company Name *
-                </label>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="grid md:grid-cols-2 gap-4">
                 <input
                   type="text"
-                  id="company"
-                  name="company"
+                  name="firstName"
                   required
-                  value={formData.company}
+                  value={formData.firstName}
                   onChange={handleChange}
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#120174] focus:ring-2 focus:ring-[#120174]/20 outline-none transition-all"
-                  placeholder="Your Company"
+                  placeholder="First Name *"
+                />
+                <input
+                  type="text"
+                  name="lastName"
+                  required
+                  value={formData.lastName}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#120174] focus:ring-2 focus:ring-[#120174]/20 outline-none transition-all"
+                  placeholder="Last Name *"
                 />
               </div>
 
+              <input
+                type="email"
+                name="email"
+                required
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#120174] focus:ring-2 focus:ring-[#120174]/20 outline-none transition-all"
+                placeholder="Work Email *"
+              />
+
+              <input
+                type="text"
+                name="company"
+                required
+                value={formData.company}
+                onChange={handleChange}
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#120174] focus:ring-2 focus:ring-[#120174]/20 outline-none transition-all"
+                placeholder="Company Name *"
+              />
+
               <div>
-                <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2">
-                  Phone Number *
-                </label>
                 <PhoneInput
                   international
                   defaultCountry="US"
                   value={formData.phone}
                   onChange={(value) => setFormData({ ...formData, phone: value || '' })}
                   className="phone-input-custom"
+                  placeholder="Phone Number *"
                   numberInputProps={{
-                    className: "w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#120174] focus:ring-2 focus:ring-[#120174]/20 outline-none transition-all"
+                    className: "w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#120174] focus:ring-2 focus:ring-[#120174]/20 outline-none transition-all",
+                    name: "phone",
+                    required: true,
+                    type: "tel"
                   }}
                 />
-                <p className="text-xs text-gray-500 mt-1">Select your country and enter your phone number</p>
               </div>
 
-              <div>
-                <label htmlFor="interest" className="block text-sm font-semibold text-gray-700 mb-2">
-                  I'm interested in *
-                </label>
-                <select
-                  id="interest"
-                  name="interest"
-                  required
-                  value={formData.interest}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#120174] focus:ring-2 focus:ring-[#120174]/20 outline-none transition-all"
-                >
-                  <option value="demo">Requesting a Demo</option>
-                  <option value="pricing">Pricing Information</option>
-                  <option value="partnership">Partnership Opportunities</option>
-                  <option value="support">Technical Support</option>
-                  <option value="other">Other Inquiry</option>
-                  <option value="consultation">Consultation Services</option>
-                </select>
-              </div>
+              <select
+                name="interest"
+                required
+                value={formData.interest}
+                onChange={handleChange}
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#120174] focus:ring-2 focus:ring-[#120174]/20 outline-none transition-all"
+              >
+                <option value="">I'm interested in *</option>
+                <option value="demo">Requesting a Demo</option>
+                <option value="pricing">Pricing Information</option>
+                <option value="partnership">Partnership Opportunities</option>
+                <option value="support">Technical Support</option>
+                <option value="other">Other Inquiry</option>
+                <option value="consultation">Consultation Services</option>
+              </select>
 
-              <div>
-                <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
-                  Message *
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows={5}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#120174] focus:ring-2 focus:ring-[#120174]/20 outline-none transition-all resize-none"
-                  placeholder="Tell us about your risk management challenges..."
-                />
-              </div>
+              <textarea
+                name="message"
+                required
+                value={formData.message}
+                onChange={handleChange}
+                rows={4}
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#120174] focus:ring-2 focus:ring-[#120174]/20 outline-none transition-all resize-none"
+                placeholder="Tell us about your risk management challenges... *"
+              />
+
+              {result && (
+                <div className={`p-4 rounded-lg text-sm font-semibold ${
+                  result.includes('Success') 
+                    ? 'bg-green-100 text-green-800 border border-green-300' 
+                    : 'bg-red-100 text-red-800 border border-red-300'
+                }`}>
+                  {result}
+                </div>
+              )}
 
               <Button 
                 type="submit"
-                className="w-full bg-[#120174] hover:bg-[#2b1fa0] text-white font-semibold px-8 py-6 rounded-lg text-lg"
+                disabled={loading}
+                className="w-full bg-[#120174] hover:bg-[#2b1fa0] disabled:bg-gray-400 text-white font-semibold px-8 py-6 rounded-lg text-lg transition-all"
               >
-                Let's Talk
+                {loading ? 'Sending...' : "Let's Talk"}
               </Button>
             </form>
           </div>
