@@ -7,7 +7,7 @@ export function SocialProof() {
         </h2>
         
         <div className="flex items-center justify-center">
-          <img src="/logo.svg" alt="Company logos: Unsplash, Notion, Intercom, descript, grammarly" className="h-10 w-auto opacity-60" />
+          <img src="/logolist.png" alt="Company logos" className="h-10 w-auto opacity-60" />
         </div>
       </div>
     </section>

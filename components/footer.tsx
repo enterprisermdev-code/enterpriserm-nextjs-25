@@ -14,7 +14,7 @@ export function Footer() {
           {/* Left: Logo + CTA */}
           <div className="md:col-span-4">
             <Link href="/" className="inline-block mb-4">
-              <img src="/whitelogo.svg" alt="EnterpriseRM.ai" className="h-8" />
+              <img src="/whitelogopng.png" alt="EnterpriseRM.ai" className="h-8" />
             </Link>
             <p className="text-gray-400 mb-6">Sign up to get the latest updates </p>
 
