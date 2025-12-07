@@ -1,46 +1,58 @@
 import Link from 'next/link';
+import { Sparkles, Shield, Building2, FileCheck, Users, Globe, Lock, Heart, Landmark, Zap, Laptop, Phone, Factory } from 'lucide-react';
 
 export type MenuItem = {
   title: string;
   href: string;
+  description?: string;
+  icon?: React.ReactNode;
 };
 
 const solutions: MenuItem[] = [
   {
     title: 'Enterprise GRC',
     href: '/solutions/enterprise-grc',
+    icon: <Building2 className="w-4 h-4" />,
   },
   {
     title: 'Integrated Risk Management',
     href: '/solutions/integrated-risk-management',
+    icon: <Shield className="w-4 h-4" />,
   },
   {
     title: 'Cybersecurity Risk Management',
     href: '/solutions/cybersecurity-risk',
+    icon: <Lock className="w-4 h-4" />,
   },
   {
     title: 'Corporate Compliance',
     href: '/solutions/corporate-compliance',
+    icon: <FileCheck className="w-4 h-4" />,
   },
   {
     title: 'Supplier Risk and Performance',
     href: '/solutions/supplier-risk',
+    icon: <Users className="w-4 h-4" />,
   },
   {
     title: 'DORA',
     href: '/solutions/dora',
+    icon: <Sparkles className="w-4 h-4" />,
   },
   {
     title: 'UK SOX Compliance',
     href: '/solutions/uk-sox',
+    icon: <FileCheck className="w-4 h-4" />,
   },
   {
     title: 'Privacy Compliance',
     href: '/solutions/privacy-compliance',
+    icon: <Shield className="w-4 h-4" />,
   },
   {
     title: 'IDW PS 340 n.F.',
     href: '/solutions/idw-ps-340',
+    icon: <FileCheck className="w-4 h-4" />,
   },
 ];
 
@@ -79,34 +91,42 @@ const industries: MenuItem[] = [
   {
     title: 'Banking and Financial Services',
     href: '/industries/banking',
+    icon: <Landmark className="w-4 h-4" />,
   },
   {
     title: 'Energy',
     href: '/industries/energy',
+    icon: <Zap className="w-4 h-4" />,
   },
   {
     title: 'Healthcare',
     href: '/industries/healthcare',
+    icon: <Heart className="w-4 h-4" />,
   },
   {
     title: 'Insurance',
     href: '/industries/insurance',
+    icon: <Shield className="w-4 h-4" />,
   },
   {
     title: 'Life Sciences',
     href: '/industries/life-sciences',
+    icon: <Sparkles className="w-4 h-4" />,
   },
   {
     title: 'Technology',
     href: '/industries/technology',
+    icon: <Laptop className="w-4 h-4" />,
   },
   {
     title: 'Telecom',
     href: '/industries/telecom',
+    icon: <Phone className="w-4 h-4" />,
   },
   {
     title: 'Utilities',
     href: '/industries/utilities',
+    icon: <Factory className="w-4 h-4" />,
   },
 ];
 
@@ -119,29 +139,43 @@ export const menuSections: { title: string; items: MenuItem[] }[] = [
 export function MegaMenu({ open }: { open: boolean }) {
   return (
     <div
-      className={`absolute left-1/2 top-full mt-1.5 w-[90vw] max-w-5xl -translate-x-1/2 rounded-2xl border border-gray-200 bg-white shadow-xl transition-all duration-200 origin-top ${
+      className={`fixed left-0 right-0 top-[70px] mt-3 mx-auto w-[92vw] max-w-6xl rounded-2xl border border-gray-200/50 bg-white/98 backdrop-blur-xl shadow-2xl transition-all duration-300 origin-top ${
         open
-          ? 'pointer-events-auto scale-100 opacity-100'
-          : 'pointer-events-none scale-95 opacity-0'
+          ? 'pointer-events-auto scale-100 opacity-100 translate-y-0'
+          : 'pointer-events-none scale-95 opacity-0 -translate-y-4'
       }`}
       role="menu"
       aria-hidden={!open}
     >
-      <div className="mx-auto max-w-4xl px-4 py-5">
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {menuSections.map((section) => (
-            <div key={section.title}>
-              <h3 className="mb-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#120174]">
-                {section.title}
-              </h3>
+      <div className="px-6 py-5 max-h-[75vh] overflow-y-auto">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {menuSections.map((section, sectionIdx) => (
+            <div key={section.title} className={sectionIdx < menuSections.length - 1 ? 'lg:border-r border-gray-200/60 lg:pr-6' : ''}>
+              <div className="mb-3 flex items-center gap-2">
+                <div className="h-0.5 w-6 rounded-full bg-gradient-to-r from-[#120174] to-[#3d2cb5]"></div>
+                <h3 className="text-[10px] font-bold uppercase tracking-wider text-[#120174]">
+                  {section.title}
+                </h3>
+              </div>
               <ul className="space-y-0.5">
                 {section.items.map((item) => (
                   <li key={item.href}>
                     <Link
                       href={item.href}
-                      className="block rounded-lg px-2 py-1 text-[13px] text-gray-700 transition-all duration-150 hover:bg-[#f8f7fa] hover:text-[#120174] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#120174] focus-visible:ring-offset-2"
+                      className="group block rounded-lg px-3 py-2 transition-all duration-200 hover:bg-gradient-to-r hover:from-[#f8f7fa] hover:to-white hover:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#120174] focus-visible:ring-offset-2"
                     >
-                      <span className="font-medium leading-5">{item.title}</span>
+                      <div className="flex items-center gap-2.5">
+                        {item.icon && (
+                          <div className="text-[#120174] opacity-60 group-hover:opacity-100 transition-opacity flex-shrink-0">
+                            {item.icon}
+                          </div>
+                        )}
+                        <div className="flex-1 min-w-0">
+                          <div className="font-medium text-[13px] text-gray-900 group-hover:text-[#120174] transition-colors leading-snug">
+                            {item.title}
+                          </div>
+                        </div>
+                      </div>
                     </Link>
                   </li>
                 ))}
