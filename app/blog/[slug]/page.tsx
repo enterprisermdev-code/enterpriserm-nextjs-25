@@ -112,11 +112,12 @@ export default async function BlogPostPage({
       {/* Cover Image */}
       {post.mainImage?.asset?.url && (
         <section className="container mx-auto px-6 max-w-5xl -mt-8 mb-12">
-          <div className="relative w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-xl">
+          <div className="relative w-full aspect-[1080/565] rounded-2xl overflow-hidden shadow-xl">
             <Image
               src={post.mainImage.asset.url}
               alt={post.mainImage.alt || post.title}
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1080px"
               className="object-cover"
               priority
             />
