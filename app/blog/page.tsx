@@ -58,7 +58,7 @@ export default async function BlogPage() {
                   <div className="grid md:grid-cols-2 gap-8 items-center">
                     {/* Featured Image */}
                     {featuredPost.mainImage?.asset?.url && (
-                      <div className="relative w-full h-96 rounded-2xl overflow-hidden shadow-xl">
+                      <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
                         <Image
                           src={featuredPost.mainImage.asset.url}
                           alt={featuredPost.mainImage.alt || featuredPost.title}
