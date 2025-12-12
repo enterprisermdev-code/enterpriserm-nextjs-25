@@ -42,70 +42,87 @@ export default async function BlogPage() {
 
         {/* Featured Section */}
         {posts.length > 0 && (
-          <section className="py-16">
+          <section className="py-16 bg-gradient-to-br from-[#f8f7fa] to-white">
             <div className="container mx-auto px-6">
-              <div className="flex items-center gap-2 mb-8">
-                <div className="h-0.5 w-6 rounded-full bg-gradient-to-r from-[#120174] to-[#3d2cb5]"></div>
-                <h2 className="text-xs font-bold uppercase tracking-wider text-[#120174]">Top Picks</h2>
+              <div className="flex items-center gap-2 mb-4">
+                <div className="h-0.5 w-8 rounded-full bg-gradient-to-r from-[#120174] to-[#3d2cb5]"></div>
+                <h2 className="text-sm font-bold uppercase tracking-wider text-[#120174]">Top Picks</h2>
               </div>
               <p className="text-sm text-gray-600 mb-8">Get our best GRC insights, curated to help you win the boardroom.</p>
               
               {featuredPost && (
-                <Link
-                  href={`/blog/${featuredPost.slug.current}`}
-                  className="group block mb-12"
-                >
-                  <div className="grid md:grid-cols-2 gap-8 items-center">
+                <div className="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300">
+                  <div className="grid md:grid-cols-2 gap-0">
                     {/* Featured Image */}
                     {featuredPost.mainImage?.asset?.url && (
-                      <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
+                      <Link 
+                        href={`/blog/${featuredPost.slug.current}`}
+                        className="relative h-full min-h-[300px] md:min-h-[400px] overflow-hidden bg-gray-50 group"
+                      >
                         <Image
                           src={featuredPost.mainImage.asset.url}
                           alt={featuredPost.mainImage.alt || featuredPost.title}
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          priority
                         />
-                      </div>
+                      </Link>
                     )}
                     
                     {/* Featured Content */}
-                    <div className="flex flex-col justify-center">
-                      {featuredPost.categories && featuredPost.categories.length > 0 && (
-                        <div className="flex flex-wrap gap-2 mb-4">
-                          {featuredPost.categories.map((category) => (
-                            <span
-                              key={category._id}
-                              className="inline-block px-3 py-1 text-xs font-semibold text-[#120174] bg-[#120174]/10 rounded-full"
-                            >
-                              {category.title}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-                      <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 group-hover:text-[#120174] transition-colors leading-tight">
-                        {featuredPost.title}
-                      </h3>
-                      {featuredPost.excerpt && (
-                        <p className="text-gray-600 text-lg mb-6 leading-relaxed">
-                          {featuredPost.excerpt}
-                        </p>
-                      )}
-                      <div className="flex items-center gap-4 pt-6 border-t border-gray-200">
+                    <div className="flex flex-col justify-between p-6 md:p-8 lg:p-10">
+                      <div>
+                        {featuredPost.categories && featuredPost.categories.length > 0 && (
+                          <div className="flex flex-wrap gap-2 mb-4">
+                            {featuredPost.categories.map((category) => (
+                              <span
+                                key={category._id}
+                                className="inline-block px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-[#120174] bg-[#120174]/10 rounded-full"
+                              >
+                                {category.title}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                        <Link href={`/blog/${featuredPost.slug.current}`}>
+                          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 hover:text-[#120174] transition-colors leading-tight">
+                            {featuredPost.title}
+                          </h3>
+                        </Link>
+                        {featuredPost.excerpt && (
+                          <p className="text-gray-600 text-base mb-6 leading-relaxed">
+                            {featuredPost.excerpt.split(' ').slice(0, 100).join(' ')}
+                            {featuredPost.excerpt.split(' ').length > 100 && '...'}
+                          </p>
+                        )}
+                        <Link
+                          href={`/blog/${featuredPost.slug.current}`}
+                          className="inline-flex items-center gap-2 px-6 py-3 bg-[#120174] text-white rounded-full hover:bg-[#0d0050] transition-all duration-200 font-semibold text-sm shadow-md hover:shadow-lg"
+                        >
+                          Read More
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </Link>
+                      </div>
+                      
+                      <div className="flex items-center gap-4 pt-6 mt-6 border-t border-gray-200">
                         {featuredPost.author?.image?.asset?.url && (
                           <Image
                             src={featuredPost.author.image.asset.url}
                             alt={featuredPost.author.name || 'Author'}
-                            width={40}
-                            height={40}
-                            className="rounded-full"
+                            width={44}
+                            height={44}
+                            className="rounded-full ring-2 ring-gray-100"
                           />
                         )}
                         <div>
                           {featuredPost.author?.name && (
-                            <p className="font-semibold text-gray-900">{featuredPost.author.name}</p>
+                            <p className="font-semibold text-gray-900 text-sm">{featuredPost.author.name}</p>
                           )}
                           {featuredPost.publishedAt && (
-                            <time dateTime={featuredPost.publishedAt} className="text-sm text-gray-500">
+                            <time dateTime={featuredPost.publishedAt} className="text-xs text-gray-500">
                               {new Date(featuredPost.publishedAt).toLocaleDateString("en-US", {
                                 month: "long",
                                 day: "numeric",
@@ -117,7 +134,7 @@ export default async function BlogPage() {
                       </div>
                     </div>
                   </div>
-                </Link>
+                </div>
               )}
             </div>
           </section>
@@ -155,7 +172,7 @@ export default async function BlogPage() {
                     className="group bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-[#120174] hover:shadow-lg transition-all duration-300 flex flex-col"
                   >
                     {post.mainImage?.asset?.url && (
-                      <div className="relative w-full h-40 overflow-hidden bg-gray-100">
+                      <div className="relative w-full aspect-square overflow-hidden bg-gray-50">
                         <Image
                           src={post.mainImage.asset.url}
                           alt={post.mainImage.alt || post.title}

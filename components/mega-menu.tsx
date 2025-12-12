@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Sparkles, Shield, Building2, FileCheck, Users, Globe, Lock, Heart, Landmark, Zap, Laptop, Phone, Factory } from 'lucide-react';
+import { Sparkles, Shield, Building2, FileCheck, Users, Lock } from 'lucide-react';
 
 export type MenuItem = {
   title: string;
@@ -87,59 +87,15 @@ const frameworks: MenuItem[] = [
   },
 ];
 
-const industries: MenuItem[] = [
-  {
-    title: 'Banking and Financial Services',
-    href: '/industries/banking',
-    icon: <Landmark className="w-4 h-4" />,
-  },
-  {
-    title: 'Energy',
-    href: '/industries/energy',
-    icon: <Zap className="w-4 h-4" />,
-  },
-  {
-    title: 'Healthcare',
-    href: '/industries/healthcare',
-    icon: <Heart className="w-4 h-4" />,
-  },
-  {
-    title: 'Insurance',
-    href: '/industries/insurance',
-    icon: <Shield className="w-4 h-4" />,
-  },
-  {
-    title: 'Life Sciences',
-    href: '/industries/life-sciences',
-    icon: <Sparkles className="w-4 h-4" />,
-  },
-  {
-    title: 'Technology',
-    href: '/industries/technology',
-    icon: <Laptop className="w-4 h-4" />,
-  },
-  {
-    title: 'Telecom',
-    href: '/industries/telecom',
-    icon: <Phone className="w-4 h-4" />,
-  },
-  {
-    title: 'Utilities',
-    href: '/industries/utilities',
-    icon: <Factory className="w-4 h-4" />,
-  },
-];
-
 export const menuSections: { title: string; items: MenuItem[] }[] = [
   { title: 'Product Solutions', items: solutions },
   { title: 'Frameworks', items: frameworks },
-  { title: 'Industries', items: industries },
 ];
 
 export function MegaMenu({ open }: { open: boolean }) {
   return (
     <div
-      className={`fixed left-0 right-0 top-[70px] mt-3 mx-auto w-[92vw] max-w-6xl rounded-2xl border border-gray-200/50 bg-white/98 backdrop-blur-xl shadow-2xl transition-all duration-300 origin-top ${
+      className={`fixed left-0 right-0 top-[70px] mt-3 mx-auto w-[92vw] max-w-4xl rounded-2xl border border-gray-200/50 bg-white/98 backdrop-blur-xl shadow-2xl transition-all duration-300 origin-top ${
         open
           ? 'pointer-events-auto scale-100 opacity-100 translate-y-0'
           : 'pointer-events-none scale-95 opacity-0 -translate-y-4'
@@ -148,9 +104,9 @@ export function MegaMenu({ open }: { open: boolean }) {
       aria-hidden={!open}
     >
       <div className="px-6 py-5 max-h-[75vh] overflow-y-auto">
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {menuSections.map((section, sectionIdx) => (
-            <div key={section.title} className={sectionIdx < menuSections.length - 1 ? 'lg:border-r border-gray-200/60 lg:pr-6' : ''}>
+            <div key={section.title} className={sectionIdx < menuSections.length - 1 ? 'md:border-r border-gray-200/60 md:pr-6' : ''}>
               <div className="mb-3 flex items-center gap-2">
                 <div className="h-0.5 w-6 rounded-full bg-gradient-to-r from-[#120174] to-[#3d2cb5]"></div>
                 <h3 className="text-[10px] font-bold uppercase tracking-wider text-[#120174]">

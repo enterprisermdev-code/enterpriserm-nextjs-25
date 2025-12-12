@@ -3,15 +3,19 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { useState, useRef, FocusEvent } from 'react';
 import { MegaMenu, menuSections } from './mega-menu';
+import { IndustriesMenu, industries } from './industries-menu';
 import { Menu, X } from 'lucide-react';
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [industriesOpen, setIndustriesOpen] = useState(false);
   const [resourcesOpen, setResourcesOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileFeaturesOpen, setMobileFeaturesOpen] = useState(false);
+  const [mobileIndustriesOpen, setMobileIndustriesOpen] = useState(false);
   const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false);
   const menuTimeout = useRef<NodeJS.Timeout | null>(null);
+  const industriesTimeout = useRef<NodeJS.Timeout | null>(null);
   const resourcesTimeout = useRef<NodeJS.Timeout | null>(null);
 
   function handleMenuEnter() {
@@ -25,6 +29,18 @@ export function Header() {
     // Close menu only when focus moves outside of the features trigger area.
     if (!event.currentTarget.contains(event.relatedTarget)) {
       handleMenuLeave();
+    }
+  }
+  function handleIndustriesEnter() {
+    if (industriesTimeout.current) clearTimeout(industriesTimeout.current);
+    setIndustriesOpen(true);
+  }
+  function handleIndustriesLeave() {
+    industriesTimeout.current = setTimeout(() => setIndustriesOpen(false), 150);
+  }
+  function handleIndustriesBlur(event: FocusEvent<HTMLDivElement>) {
+    if (!event.currentTarget.contains(event.relatedTarget)) {
+      handleIndustriesLeave();
     }
   }
   function handleResourcesEnter() {
@@ -76,7 +92,27 @@ export function Header() {
                 </button>
                 <MegaMenu open={menuOpen} />
               </div>
-               
+              
+              <div
+                className="relative group"
+                onMouseEnter={handleIndustriesEnter}
+                onMouseLeave={handleIndustriesLeave}
+                onFocusCapture={handleIndustriesEnter}
+                onBlur={handleIndustriesBlur}
+              >
+                <button
+                  className="relative px-4 py-2 rounded-full text-sm font-semibold text-gray-700 hover:text-[#120174] transition-all duration-200 flex items-center gap-1.5 group/btn"
+                  aria-haspopup="menu"
+                  aria-expanded={industriesOpen}
+                >
+                  <span className="absolute inset-0 rounded-full bg-gray-100/0 group-hover/btn:bg-gray-100/80 transition-all duration-200"></span>
+                  <span className="relative z-10">Industries</span>
+                  <svg className={`relative z-10 w-3.5 h-3.5 transition-transform duration-300 ${industriesOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <IndustriesMenu open={industriesOpen} />
+              </div>
               
               <div
                 className="relative group"
@@ -145,6 +181,7 @@ export function Header() {
               setMobileMenuOpen(next);
               if (!next) {
                 setMobileFeaturesOpen(false);
+                setMobileIndustriesOpen(false);
                 setMobileResourcesOpen(false);
               }
             }}
@@ -208,6 +245,38 @@ export function Header() {
                             </div>
                           </div>
                         ))}
+                      </div>
+                    )}
+                  </div>
+                  <div>
+                    <button
+                      onClick={() => setMobileIndustriesOpen(!mobileIndustriesOpen)}
+                      className="w-full flex items-center justify-between px-5 py-3 rounded-2xl text-sm font-semibold text-gray-700 hover:text-[#120174] hover:bg-gradient-to-r hover:from-gray-50 hover:to-white transition-all duration-200"
+                    >
+                      Industries
+                      <svg className={`w-4 h-4 transition-transform duration-300 ${mobileIndustriesOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+                    {mobileIndustriesOpen && (
+                      <div className="mt-3 bg-gradient-to-br from-gray-50/50 to-white rounded-2xl p-3 border border-gray-100">
+                        <div className="grid grid-cols-2 gap-1">
+                          {industries.map((item) => (
+                            <Link
+                              href={item.href}
+                              key={item.href}
+                              className="flex items-center gap-2 rounded-xl px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-white hover:text-[#120174] hover:shadow-sm transition-all duration-200"
+                              onClick={() => setMobileMenuOpen(false)}
+                            >
+                              {item.icon && (
+                                <div className="text-[#120174] opacity-60 flex-shrink-0">
+                                  {item.icon}
+                                </div>
+                              )}
+                              <span className="text-xs">{item.title}</span>
+                            </Link>
+                          ))}
+                        </div>
                       </div>
                     )}
                   </div>
