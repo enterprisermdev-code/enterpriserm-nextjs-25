@@ -22,17 +22,53 @@ export const portableTextComponents: PortableTextComponents = {
       return (
         <div className="my-8 rounded-xl overflow-hidden">
           <Image
-            src={urlFor(value).width(1200).height(675).url()}
+            src={urlFor(value).url()}
             alt={value.alt || "Blog image"}
             width={1200}
-            height={675}
-            className="w-full h-auto"
+            height={800}
+            className="w-full h-auto object-contain"
+            style={{ maxHeight: 'none' }}
           />
           {value.caption && (
             <p className="text-sm text-gray-500 text-center mt-2 italic">
               {value.caption}
             </p>
           )}
+        </div>
+      );
+    },
+    table: ({ value }: any) => {
+      if (!value?.rows) {
+        return null;
+      }
+      return (
+        <div className="my-8 overflow-x-auto">
+          <table className="min-w-full border-collapse border border-gray-300 rounded-lg overflow-hidden shadow-sm">
+            <tbody>
+              {value.rows.map((row: any, rowIndex: number) => (
+                <tr 
+                  key={rowIndex}
+                  className={rowIndex === 0 ? "bg-[#120174] text-white" : "hover:bg-gray-50"}
+                >
+                  {row.cells.map((cell: string, cellIndex: number) => {
+                    const CellTag = rowIndex === 0 ? "th" : "td";
+                    return (
+                      <CellTag
+                        key={cellIndex}
+                        className={`border border-gray-300 px-4 py-3 text-left ${
+                          rowIndex === 0 
+                            ? "font-bold text-sm uppercase tracking-wide" 
+                            : "text-gray-700 text-sm"
+                        }`}
+                      >
+                        {cell}
+                      </CellTag>
+                    );
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       );
     },
