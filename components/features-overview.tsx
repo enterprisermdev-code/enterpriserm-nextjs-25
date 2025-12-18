@@ -15,7 +15,7 @@ export function FeaturesOverview() {
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Purpose-Built For Modern Risk Teams</h2>
-          <p className="text-gray-600 text-lg">Everything you need to move faster, stay compliant, and reduce uncertainty—packaged in one platform.</p>
+          <p className="text-gray-600 text-lg">Everything you need to move faster, stay compliant, and reduce uncertainty—packaged in one platform</p>
         </div>
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {features.map(f => (
