@@ -57,13 +57,13 @@ export default async function BlogPage() {
                     {featuredPost.mainImage?.asset?.url && (
                       <Link 
                         href={`/blog/${featuredPost.slug.current}`}
-                        className="relative h-full min-h-[300px] md:min-h-[400px] overflow-hidden bg-gray-50 group"
+                        className="relative w-full aspect-[1200/628] overflow-hidden bg-gray-50 group"
                       >
                         <Image
                           src={featuredPost.mainImage.asset.url}
                           alt={featuredPost.mainImage.alt || featuredPost.title}
                           fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          className="object-contain"
                           sizes="(max-width: 768px) 100vw, 50vw"
                           priority
                         />
@@ -172,12 +172,12 @@ export default async function BlogPage() {
                     className="group bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-[#120174] hover:shadow-lg transition-all duration-300 flex flex-col"
                   >
                     {post.mainImage?.asset?.url && (
-                      <div className="relative w-full aspect-square overflow-hidden bg-gray-50">
+                      <div className="relative w-full aspect-[1200/628] overflow-hidden bg-gray-50">
                         <Image
                           src={post.mainImage.asset.url}
                           alt={post.mainImage.alt || post.title}
                           fill
-                          className="object-cover group-hover:scale-110 transition-transform duration-300"
+                          className="object-contain"
                         />
                       </div>
                     )}

@@ -113,13 +113,13 @@ export default async function BlogPostPage({
         {post.mainImage?.asset?.url && (
           <section className="py-6 md:py-12">
             <div className="container mx-auto px-4 md:px-6 max-w-5xl">
-              <div className="relative w-full aspect-video rounded-lg md:rounded-2xl overflow-hidden shadow-lg md:shadow-2xl">
+              <div className="relative w-full aspect-[1200/628] rounded-lg md:rounded-2xl overflow-hidden shadow-lg md:shadow-2xl bg-gray-50">
                 <Image
                   src={post.mainImage.asset.url}
                   alt={post.mainImage.alt || post.title}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1080px"
-                  className="object-cover"
+                  className="object-contain"
                   priority
                 />
               </div>
