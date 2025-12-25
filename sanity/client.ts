@@ -57,3 +57,18 @@ export type BlogPost = {
   ogImage?: SanityImage;
   twitterCard?: 'summary' | 'summary_large_image';
 };
+
+export type TemplateDoc = {
+  _id: string;
+  title: string;
+  slug?: { current: string };
+  excerpt?: string;
+  desc?: string;
+  templateDocPath?: string;
+  body?: unknown;
+  // SEO fields
+  seoTitle?: string;
+  seoDescription?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+};

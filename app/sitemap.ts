@@ -3,6 +3,7 @@ import { sanityClient } from '@/sanity/client'
 import { queries } from '@/sanity/queries'
 
 type Post = { slug?: { current?: string } }
+type Template = { slug?: { current?: string } }
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.enterpriserm.ai').replace(/\/+$/, '')
 
@@ -13,6 +14,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/about',
     '/contact',
     '/blog',
+    '/templates',
     '/contents/cookie-notice',
     '/contents/privacy-policy',
     '/contents/terms',
@@ -44,5 +46,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     blogEntries = []
   }
 
-  return [...staticEntries, ...blogEntries]
+  // Dynamic template routes from Sanity
+  let templateEntries: MetadataRoute.Sitemap = []
+  try {
+    const templates: Template[] = await sanityClient.fetch(queries.allTemplates)
+    templateEntries = (templates || [])
+      .filter((t) => t?.slug?.current)
+      .map((t) => ({
+        url: `${siteUrl}/templates/${t!.slug!.current}`,
+        lastModified: now,
+        changeFrequency: 'monthly',
+        priority: 0.7,
+      }))
+  } catch (e) {
+    templateEntries = []
+  }
+
+  return [...staticEntries, ...blogEntries, ...templateEntries]
 }

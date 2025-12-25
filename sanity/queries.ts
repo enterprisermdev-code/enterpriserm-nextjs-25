@@ -76,4 +76,27 @@ export const queries = {
     },
     twitterCard
   }`,
+  
+  // Templates
+  allTemplates: `*[_type == "templates"]|order(_updatedAt desc){
+    _id,
+    title,
+    slug,
+    excerpt,
+    desc
+  }`,
+
+  templateBySlug: `*[_type == "templates" && slug.current == $slug][0]{
+    _id,
+    title,
+    slug,
+    excerpt,
+    desc,
+    templateDocPath,
+    body,
+    seoTitle,
+    seoDescription,
+    ogTitle,
+    ogDescription
+  }`,
 } as const;
