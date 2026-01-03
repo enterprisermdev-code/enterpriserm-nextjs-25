@@ -21,8 +21,8 @@ export function PrimaryCTA() {
   return (
     <section className="py-24 bg-linear-to-r from-[#120174] via-[#2b1fa0] to-[#120174] text-white relative overflow-hidden">
       {/* Animated background graph overlay */}
-      <div className="absolute inset-0 opacity-10 pointer-events-none">
-        <ResponsiveContainer width="100%" height="100%">
+      <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ minHeight: '400px' }}>
+        <ResponsiveContainer width="100%" height="100%" minHeight={300}>
           <BarChart data={chartData}>
             <Bar dataKey="value" fill="white" animationDuration={2000} animationBegin={0}>
               {chartData.map((entry, index) => (
