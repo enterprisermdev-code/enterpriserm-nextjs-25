@@ -7,7 +7,7 @@ type PopupContactProps = {
   accessKey?: string; // Web3Forms public access key
   redirectUrl?: string; // URL to download after success (e.g., templateDocPath)
   className?: string;
-  bouncifyApiKey?: string; // Bouncify API key for email validation
+  bouncerApiKey?: string; // Bouncer API key for email validation
 };
 
 export function PopupContact({
@@ -15,7 +15,7 @@ export function PopupContact({
   accessKey = "9a86aa73-ae35-4ea0-8a1f-f546aa5105e2",
   redirectUrl,
   className,
-  bouncifyApiKey = process.env.NEXT_PUBLIC_BOUNCIFY_API_KEY,
+  bouncerApiKey = process.env.NEXT_PUBLIC_BOUNCER_API_KEY,
 }: PopupContactProps) {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -46,39 +46,69 @@ export function PopupContact({
   }, [open]);
 
   async function validateEmail(email: string): Promise<boolean> {
-    if (!bouncifyApiKey || bouncifyApiKey.trim() === '' || !email) return true; // Skip validation if no API key or email
+    if (!bouncerApiKey || bouncerApiKey.trim() === '' || !email) return true; // Skip validation if no API key or email
 
     setEmailValidation({ isValidating: true, isValid: null, message: null });
 
     try {
       const response = await fetch(
-        `https://api.bouncify.io/v1/verify?apikey=${encodeURIComponent(bouncifyApiKey)}&email=${encodeURIComponent(email)}`
+        `https://api.usebouncer.com/v1.1/email/verify?email=${encodeURIComponent(email)}`,
+        {
+          method: 'GET',
+          headers: {
+            'x-api-key': bouncerApiKey,
+            'Content-Type': 'application/json',
+          },
+        }
       );
       
       const data = await response.json();
       
       if (!response.ok) {
-        setEmailValidation({
-          isValidating: false,
-          isValid: false,
-          message: data.result || "Email validation service error",
-        });
+        if (response.status === 402) {
+          setEmailValidation({
+            isValidating: false,
+            isValid: false,
+            message: "API credits exhausted",
+          });
+        } else if (response.status === 429) {
+          setEmailValidation({
+            isValidating: false,
+            isValid: false,
+            message: "Too many requests, please try again",
+          });
+        } else {
+          setEmailValidation({
+            isValidating: false,
+            isValid: false,
+            message: data.message || "Email validation service error",
+          });
+        }
         return false;
       }
 
-      if (data.success) {
-        const isValid = data.result === "deliverable";
+      // Check Bouncer response format
+      if (data.status) {
+        const isValid = data.status === "deliverable";
+        const isRisky = data.status === "risky";
+        
         setEmailValidation({
           isValidating: false,
-          isValid,
-          message: isValid ? "Email is valid" : data.message || "Email is not deliverable",
+          isValid: isValid,
+          message: isValid 
+            ? "Email is valid" 
+            : isRisky 
+            ? "Email is risky - may not be deliverable"
+            : data.reason || "Email is not deliverable",
         });
+        
+        // Accept deliverable emails, reject risky/undeliverable/unknown
         return isValid;
       } else {
         setEmailValidation({
           isValidating: false,
           isValid: false,
-          message: data.result || "Email validation failed",
+          message: "Email validation failed",
         });
         return false;
       }
@@ -111,8 +141,8 @@ export function PopupContact({
     const formData = new FormData(form);
     const email = String(formData.get("email") || "");
 
-    // Validate email with Bouncify if API key is provided
-    if (bouncifyApiKey && bouncifyApiKey.trim() !== '' && email) {
+    // Validate email with Bouncer if API key is provided
+    if (bouncerApiKey && bouncerApiKey.trim() !== '' && email) {
       const isEmailValid = await validateEmail(email);
       if (!isEmailValid) {
         setError("Please enter a valid email address that can receive emails.");
@@ -295,7 +325,7 @@ export function PopupContact({
                     <Button
                       type="submit"
                       className="bg-[#120174] hover:bg-[#0d0050] text-white rounded-full px-5 disabled:opacity-50 disabled:cursor-not-allowed"
-                      disabled={loading || emailValidation.isValidating || (!!bouncifyApiKey && emailValidation.isValid === false)}
+                      disabled={loading || emailValidation.isValidating || (!!bouncerApiKey && emailValidation.isValid === false)}
                     >
                       {loading ? "Submitting…" : emailValidation.isValidating ? "Validating…" : "Download"}
                     </Button>
