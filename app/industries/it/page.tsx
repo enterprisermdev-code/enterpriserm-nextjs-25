@@ -193,7 +193,7 @@ export default function ITPage() {
               
               <div className="relative">
                 <img 
-                  src="https://images.unsplash.com/photo-1551808525-51a94da548ce?w=600&h=400&fit=crop" 
+                  src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg" 
                   alt="IT Security Infrastructure"
                   className="rounded-2xl shadow-2xl"
                 />
