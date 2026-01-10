@@ -1,6 +1,5 @@
-import { FiPieChart } from 'react-icons/fi';
-import { FaRegClock, FaRegCheckCircle } from 'react-icons/fa';
-import { PiFlowArrowBold } from 'react-icons/pi';
+import { FiShield, FiZap, FiSettings, FiTrendingUp } from 'react-icons/fi';
+import { HiOutlineSparkles } from 'react-icons/hi2';
 
 export function WhyEnterAI() {
   return (
@@ -8,47 +7,58 @@ export function WhyEnterAI() {
       <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
         {/* Left Side */}
         <div>
-          <h2 className="text-5xl font-bold text-gray-900 mb-8">Why Choose Enterprise.AI?</h2>
-          <p className="text-base text-gray-900 max-w-xl">
-            Enterprise.AI empowers organizations to manage all types of enterprise risks in one unified platform with clarity and precision. From real-time insights to seamless collaboration and regulatory compliance, it helps your teams act smarter, faster, and more confidently.
+          <h2 className="text-5xl font-bold text-gray-900 mb-8">Why EnterpriseRM?</h2>
+          <p className="text-xl text-gray-700 max-w-xl mb-6 leading-relaxed">
+            Eliminate friction throughout your security program. The EnterpriseRM Platform acts as your operating system for your security program, helping you manage your risk and compliance with minimal friction.
           </p>
+          <div className="flex items-center gap-3 text-[#120174]">
+            <HiOutlineSparkles className="text-2xl" />
+            <span className="font-semibold text-lg">60-80% reduction in manual effort</span>
+          </div>
         </div>
         {/* Right Side */}
-        <div className="space-y-10">
-          <div className="flex items-start gap-6">
-            <div className="bg-white rounded-xl shadow p-4">
-              <FiPieChart className="text-[#120174] text-3xl" />
+        <div className="space-y-8">
+          <div className="group flex items-start gap-6 hover:bg-white hover:p-6 hover:rounded-2xl hover:shadow-lg transition-all duration-300 cursor-pointer">
+            <div className="bg-white rounded-xl shadow-md p-4 group-hover:shadow-xl transition-shadow duration-300">
+              <FiShield className="text-[#120174] text-3xl" />
             </div>
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Unified Risk View</h3>
-              <p className="text-gray-500">Get complete visibility by consolidating all risks into one platform.</p>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">1200+ Common Controls</h3>
+              <p className="text-gray-600 mb-2">Prebuilt mapping across different frameworks - NIST CSF, GDPR, HIPAA, SOC 1 & 2, ISO 27001</p>
+              <p className="text-sm text-[#120174] font-medium">Build your security program with pre-built control sets</p>
             </div>
           </div>
-          <div className="flex items-start gap-6">
-            <div className="bg-white rounded-xl shadow p-4">
-              <FaRegClock className="text-[#120174] text-3xl" />
+          
+          <div className="group flex items-start gap-6 hover:bg-white hover:p-6 hover:rounded-2xl hover:shadow-lg transition-all duration-300 cursor-pointer">
+            <div className="bg-white rounded-xl shadow-md p-4 group-hover:shadow-xl transition-shadow duration-300">
+              <FiZap className="text-[#120174] text-3xl" />
             </div>
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Smart Prioritization</h3>
-              <p className="text-gray-500">Focus on the most critical risks with real-time scoring and heat maps.</p>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">Easy Integration</h3>
+              <p className="text-gray-600 mb-2">Plug into your tech stack with seamless integrations and expert-driven gap assessment</p>
+              <p className="text-sm text-[#120174] font-medium">Save up to 20 hours of effort upfront in scoping</p>
             </div>
           </div>
-          <div className="flex items-start gap-6">
-            <div className="bg-white rounded-xl shadow p-4">
-              <PiFlowArrowBold className="text-[#120174] text-3xl" />
+          
+          <div className="group flex items-start gap-6 hover:bg-white hover:p-6 hover:rounded-2xl hover:shadow-lg transition-all duration-300 cursor-pointer">
+            <div className="bg-white rounded-xl shadow-md p-4 group-hover:shadow-xl transition-shadow duration-300">
+              <FiSettings className="text-[#120174] text-3xl" />
             </div>
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Seamless Collaboration</h3>
-              <p className="text-gray-500">Keep teams aligned with workflows, alerts, and smooth communication.</p>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">Automation & Workflow</h3>
+              <p className="text-gray-600 mb-2">Automate evidence collection and flag deviations with continuous control monitoring</p>
+              <p className="text-sm text-[#120174] font-medium">Achieve 24/7 audit readiness with intelligent workflows</p>
             </div>
           </div>
-          <div className="flex items-start gap-6">
-            <div className="bg-white rounded-xl shadow p-4">
-              <FaRegCheckCircle className="text-[#120174] text-3xl" />
+          
+          <div className="group flex items-start gap-6 hover:bg-white hover:p-6 hover:rounded-2xl hover:shadow-lg transition-all duration-300 cursor-pointer">
+            <div className="bg-white rounded-xl shadow-md p-4 group-hover:shadow-xl transition-shadow duration-300">
+              <FiTrendingUp className="text-[#120174] text-3xl" />
             </div>
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Regulatory Ready</h3>
-              <p className="text-gray-500">Stay audit-ready with built-in compliance mapping across global standards.</p>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">Scalable Support</h3>
+              <p className="text-gray-600 mb-2">Flexible pricing that scales with your business plus dedicated Customer Success Manager</p>
+              <p className="text-sm text-[#120174] font-medium">Expert InfoSec consultant from Day 1</p>
             </div>
           </div>
         </div>

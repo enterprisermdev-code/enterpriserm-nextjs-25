@@ -20,7 +20,7 @@ export const industries: IndustryItem[] = [
   { title: 'Healthcare', href: '/industries/healthcare', icon: <Heart className="w-4 h-4" /> },
   { title: 'High Technology', href: '/industries/high-technology', icon: <Laptop className="w-4 h-4" /> },
   { title: 'Industrial Manufacturing', href: '/industries/industrial-manufacturing', icon: <Factory className="w-4 h-4" /> },
-  { title: 'Information Services & Publishing', href: '/industries/information-services-publishing', icon: <BookOpen className="w-4 h-4" /> },
+  { title: 'Information Technology', href: '/industries/it', icon: <BookOpen className="w-4 h-4" /> },
   { title: 'Insurance', href: '/industries/insurance', icon: <Shield className="w-4 h-4" /> },
   { title: 'Life Sciences', href: '/industries/life-sciences', icon: <FlaskConical className="w-4 h-4" /> },
   { title: 'Logistics & Distribution', href: '/industries/logistics-distribution', icon: <Truck className="w-4 h-4" /> },
@@ -50,7 +50,7 @@ export function IndustriesMenu({ open }: { open: boolean }) {
     >
       <div className="px-6 py-5 max-h-[75vh] overflow-y-auto">
         <div className="mb-3 flex items-center gap-2">
-          <div className="h-0.5 w-8 rounded-full bg-gradient-to-r from-[#120174] to-[#3d2cb5]"></div>
+          <div className="h-0.5 w-8 rounded-full bg-linear-to-r from-[#120174] to-[#3d2cb5]"></div>
           <h3 className="text-[10px] font-bold uppercase tracking-wider text-[#120174]">
             Industries We Serve
           </h3>
@@ -60,11 +60,11 @@ export function IndustriesMenu({ open }: { open: boolean }) {
             <li key={item.href}>
               <Link
                 href={item.href}
-                className="group block rounded-lg px-3 py-2 transition-all duration-200 hover:bg-gradient-to-r hover:from-[#f8f7fa] hover:to-white hover:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#120174] focus-visible:ring-offset-2"
+                className="group block rounded-lg px-3 py-2 transition-all duration-200 hover:bg-linear-to-r hover:from-[#f8f7fa] hover:to-white hover:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#120174] focus-visible:ring-offset-2"
               >
                 <div className="flex items-center gap-2.5">
                   {item.icon && (
-                    <div className="text-[#120174] opacity-60 group-hover:opacity-100 transition-opacity flex-shrink-0">
+                    <div className="text-[#120174] opacity-60 group-hover:opacity-100 transition-opacity shrink-0">
                       {item.icon}
                     </div>
                   )}

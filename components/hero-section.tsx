@@ -23,9 +23,11 @@ export function HeroSection() {
             </p>
             
             <div>
-              <Button className="bg-[#120174] hover:bg-[#0d0050] text-white text-lg px-8 py-6 rounded-full">
-                Request a demo
-              </Button>
+                <a href="/contact">
+                <Button className="bg-[#120174] hover:bg-[#0d0050] text-white text-lg px-8 py-6 rounded-full">
+                  Request a demo
+                </Button>
+                </a>
             </div>
           </div>
           

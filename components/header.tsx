@@ -144,7 +144,7 @@ export function Header() {
                   <div className="p-2">
                     <Link
                       href="/blog"
-                      className="block px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gradient-to-r hover:from-[#f8f7fa] hover:to-white hover:text-[#120174] transition-all rounded-xl"
+                      className="block px-4 py-3 text-sm font-medium text-gray-700 hover:bg-linear-to-r hover:from-[#f8f7fa] hover:to-white hover:text-[#120174] transition-all rounded-xl"
                     >
                       <div className="flex items-center gap-2">
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -155,7 +155,7 @@ export function Header() {
                     </Link>
                     <Link
                       href="/templates"
-                      className="mt-1 block px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gradient-to-r hover:from-[#f8f7fa] hover:to-white hover:text-[#120174] transition-all rounded-xl"
+                      className="mt-1 block px-4 py-3 text-sm font-medium text-gray-700 hover:bg-linear-to-r hover:from-[#f8f7fa] hover:to-white hover:text-[#120174] transition-all rounded-xl"
                     >
                       <div className="flex items-center gap-2">
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -209,13 +209,13 @@ export function Header() {
             <div className="bg-white/95 backdrop-blur-xl rounded-3xl border border-gray-200/50 shadow-2xl overflow-hidden">
               <div className="max-h-[75vh] overflow-y-auto">
                 <div className="p-5 space-y-2">
-                  <Link href="/" className="block px-5 py-3 rounded-2xl text-sm font-semibold text-gray-700 hover:text-[#120174] hover:bg-gradient-to-r hover:from-gray-50 hover:to-white transition-all duration-200">
+                  <Link href="/" className="block px-5 py-3 rounded-2xl text-sm font-semibold text-gray-700 hover:text-[#120174] hover:bg-linear-to-r hover:from-gray-50 hover:to-white transition-all duration-200">
                     Home
                   </Link>
                   <div>
                     <button 
                       onClick={() => setMobileFeaturesOpen(!mobileFeaturesOpen)}
-                      className="w-full flex items-center justify-between px-5 py-3 rounded-2xl text-sm font-semibold text-gray-700 hover:text-[#120174] hover:bg-gradient-to-r hover:from-gray-50 hover:to-white transition-all duration-200"
+                      className="w-full flex items-center justify-between px-5 py-3 rounded-2xl text-sm font-semibold text-gray-700 hover:text-[#120174] hover:bg-linear-to-r hover:from-gray-50 hover:to-white transition-all duration-200"
                     >
                       Solutions
                       <svg className={`w-4 h-4 transition-transform duration-300 ${mobileFeaturesOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -223,11 +223,11 @@ export function Header() {
                       </svg>
                     </button>
                     {mobileFeaturesOpen && (
-                      <div className="mt-3 space-y-4 bg-gradient-to-br from-gray-50/50 to-white rounded-2xl p-4 border border-gray-100">
+                      <div className="mt-3 space-y-4 bg-linear-to-br from-gray-50/50 to-white rounded-2xl p-4 border border-gray-100">
                         {menuSections.map((section) => (
                           <div key={section.title}>
                             <div className="flex items-center gap-2 mb-3">
-                              <div className="h-0.5 w-6 rounded-full bg-gradient-to-r from-[#120174] to-[#3d2cb5]"></div>
+                              <div className="h-0.5 w-6 rounded-full bg-linear-to-r from-[#120174] to-[#3d2cb5]"></div>
                               <h4 className="text-xs font-bold text-[#120174] uppercase tracking-wider">
                                 {section.title}
                               </h4>
@@ -262,7 +262,7 @@ export function Header() {
                   <div>
                     <button
                       onClick={() => setMobileIndustriesOpen(!mobileIndustriesOpen)}
-                      className="w-full flex items-center justify-between px-5 py-3 rounded-2xl text-sm font-semibold text-gray-700 hover:text-[#120174] hover:bg-gradient-to-r hover:from-gray-50 hover:to-white transition-all duration-200"
+                      className="w-full flex items-center justify-between px-5 py-3 rounded-2xl text-sm font-semibold text-gray-700 hover:text-[#120174] hover:bg-linear-to-r hover:from-gray-50 hover:to-white transition-all duration-200"
                     >
                       Industries
                       <svg className={`w-4 h-4 transition-transform duration-300 ${mobileIndustriesOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -270,7 +270,7 @@ export function Header() {
                       </svg>
                     </button>
                     {mobileIndustriesOpen && (
-                      <div className="mt-3 bg-gradient-to-br from-gray-50/50 to-white rounded-2xl p-3 border border-gray-100">
+                      <div className="mt-3 bg-linear-to-br from-gray-50/50 to-white rounded-2xl p-3 border border-gray-100">
                         <div className="grid grid-cols-2 gap-1">
                           {industries.map((item) => (
                             <Link
@@ -280,7 +280,7 @@ export function Header() {
                               onClick={() => setMobileMenuOpen(false)}
                             >
                               {item.icon && (
-                                <div className="text-[#120174] opacity-60 flex-shrink-0">
+                                <div className="text-[#120174] opacity-60 shrink-0">
                                   {item.icon}
                                 </div>
                               )}
@@ -294,7 +294,7 @@ export function Header() {
                   <div>
                     <button
                       onClick={() => setMobileResourcesOpen(!mobileResourcesOpen)}
-                      className="w-full flex items-center justify-between px-5 py-3 rounded-2xl text-sm font-semibold text-gray-700 hover:text-[#120174] hover:bg-gradient-to-r hover:from-gray-50 hover:to-white transition-all duration-200"
+                      className="w-full flex items-center justify-between px-5 py-3 rounded-2xl text-sm font-semibold text-gray-700 hover:text-[#120174] hover:bg-linear-to-r hover:from-gray-50 hover:to-white transition-all duration-200"
                     >
                       Resources
                       <svg className={`w-4 h-4 transition-transform duration-300 ${mobileResourcesOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -302,7 +302,7 @@ export function Header() {
                       </svg>
                     </button>
                     {mobileResourcesOpen && (
-                      <div className="mt-3 bg-gradient-to-br from-gray-50/50 to-white rounded-2xl p-3 border border-gray-100">
+                      <div className="mt-3 bg-linear-to-br from-gray-50/50 to-white rounded-2xl p-3 border border-gray-100">
                         <Link
                           href="/blog"
                           className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-white hover:text-[#120174] hover:shadow-sm transition-all duration-200"
@@ -326,14 +326,14 @@ export function Header() {
                       </div>
                     )}
                   </div>
-                  <Link href="/about" className="block px-5 py-3 rounded-2xl text-sm font-semibold text-gray-700 hover:text-[#120174] hover:bg-gradient-to-r hover:from-gray-50 hover:to-white transition-all duration-200">
+                  <Link href="/about" className="block px-5 py-3 rounded-2xl text-sm font-semibold text-gray-700 hover:text-[#120174] hover:bg-linear-to-r hover:from-gray-50 hover:to-white transition-all duration-200">
                     About Us
                   </Link>
-                  <Link href="/contact" className="block px-5 py-3 rounded-2xl text-sm font-semibold text-gray-700 hover:text-[#120174] hover:bg-gradient-to-r hover:from-gray-50 hover:to-white transition-all duration-200">
+                  <Link href="/contact" className="block px-5 py-3 rounded-2xl text-sm font-semibold text-gray-700 hover:text-[#120174] hover:bg-linear-to-r hover:from-gray-50 hover:to-white transition-all duration-200">
                     Contact Us
                   </Link>
                 </div>
-                <div className="p-5 pt-3 bg-gradient-to-br from-gray-50/30 to-white border-t border-gray-100">
+                <div className="p-5 pt-3 bg-linear-to-br from-gray-50/30 to-white border-t border-gray-100">
                   <div className="flex flex-col gap-2.5">
                     <Button variant="ghost" className="w-full justify-center text-gray-700 hover:text-[#120174] hover:bg-white rounded-2xl font-semibold h-11">
                       Login
