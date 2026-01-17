@@ -79,7 +79,7 @@ const frameworks: MenuItem[] = [
   },
   {
     title: 'NIST',
-    href: '/frameworks/nist',
+    href: 'solutions/frameworks/nist',
   },
   {
     title: 'PCI DSS',

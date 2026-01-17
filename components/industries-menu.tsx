@@ -8,33 +8,11 @@ export type IndustryItem = {
 };
 
 export const industries: IndustryItem[] = [
-  { title: 'Aerospace & Defense', href: '/industries/aerospace-defense', icon: <Landmark className="w-4 h-4" /> },
-  { title: 'Agriculture', href: '/industries/agriculture', icon: <Sprout className="w-4 h-4" /> },
-  { title: 'Automotive', href: '/industries/automotive', icon: <Car className="w-4 h-4" /> },
-  { title: 'Chemical Manufacturing', href: '/industries/chemical-manufacturing', icon: <FlaskConical className="w-4 h-4" /> },
-  { title: 'Communication Services', href: '/industries/communication-services', icon: <Phone className="w-4 h-4" /> },
-  { title: 'Consumer Packaged Goods', href: '/industries/consumer-packaged-goods', icon: <Package className="w-4 h-4" /> },
-  { title: 'Education', href: '/industries/education', icon: <GraduationCap className="w-4 h-4" /> },
-  { title: 'Engineering Procurement & Construction', href: '/industries/engineering-procurement-construction', icon: <Wrench className="w-4 h-4" /> },
-  { title: 'Financial Services', href: '/industries/financial-services', icon: <Landmark className="w-4 h-4" /> },
+  
+  { title: 'Fintech', href: '/industries/fintech', icon: <Landmark className="w-4 h-4" /> },
   { title: 'Healthcare', href: '/industries/healthcare', icon: <Heart className="w-4 h-4" /> },
-  { title: 'High Technology', href: '/industries/high-technology', icon: <Laptop className="w-4 h-4" /> },
-  { title: 'Industrial Manufacturing', href: '/industries/industrial-manufacturing', icon: <Factory className="w-4 h-4" /> },
   { title: 'Information Technology', href: '/industries/it', icon: <BookOpen className="w-4 h-4" /> },
-  { title: 'Insurance', href: '/industries/insurance', icon: <Shield className="w-4 h-4" /> },
-  { title: 'Life Sciences', href: '/industries/life-sciences', icon: <FlaskConical className="w-4 h-4" /> },
-  { title: 'Logistics & Distribution', href: '/industries/logistics-distribution', icon: <Truck className="w-4 h-4" /> },
-  { title: 'Media and Entertainment', href: '/industries/media-entertainment', icon: <Film className="w-4 h-4" /> },
-  { title: 'Mining', href: '/industries/mining', icon: <Hammer className="w-4 h-4" /> },
-  { title: 'Oil and Gas', href: '/industries/oil-gas', icon: <Flame className="w-4 h-4" /> },
-  { title: 'Private Equity', href: '/industries/private-equity', icon: <Banknote className="w-4 h-4" /> },
-  { title: 'Professional Services', href: '/industries/professional-services', icon: <Zap className="w-4 h-4" /> },
-  { title: 'Public Sector', href: '/industries/public-sector', icon: <Building2 className="w-4 h-4" /> },
-  { title: 'Retail', href: '/industries/retail', icon: <ShoppingBag className="w-4 h-4" /> },
-  { title: 'Semiconductor', href: '/industries/semiconductor', icon: <Cpu className="w-4 h-4" /> },
-  { title: 'Travel and Hospitality', href: '/industries/travel-hospitality', icon: <Plane className="w-4 h-4" /> },
-  { title: 'Utilities', href: '/industries/utilities', icon: <Factory className="w-4 h-4" /> },
-  { title: 'Waste Management', href: '/industries/waste-management', icon: <Recycle className="w-4 h-4" /> },
+  
 ];
 
 export function IndustriesMenu({ open }: { open: boolean }) {
