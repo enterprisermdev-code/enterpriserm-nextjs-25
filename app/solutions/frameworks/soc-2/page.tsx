@@ -300,7 +300,7 @@ export default function Soc2Page() {
 					<div className="container mx-auto px-6">
 						<div className="grid lg:grid-cols-2 gap-12 items-start">
 							<div>
-								<h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">SOC 1 vs SOC 2 vs SOC 3</h3>
+								<h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">SOC 1 vs SOC 2 vs SOC 3.</h3>
 								<p className="text-lg text-gray-600 mb-6">Different SOC reports address different assurance needs.</p>
 								<div className="space-y-4">
 									{[
