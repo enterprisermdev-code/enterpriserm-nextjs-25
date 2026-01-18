@@ -57,33 +57,29 @@ const solutions: MenuItem[] = [
 ];
 
 const frameworks: MenuItem[] = [
-  {
-    title: 'CCPA',
-    href: '/frameworks/ccpa',
-  },
-  {
-    title: 'CMMC',
-    href: '/frameworks/cmmc',
-  },
-  {
-    title: 'COSO',
-    href: '/frameworks/coso',
-  },
-  {
-    title: 'HIPAA',
-    href: '/frameworks/hipaa',
-  },
-  {
-    title: 'ISO',
-    href: '/frameworks/iso',
+   {
+    title: 'ISO 27001',
+    href: '/solutions/frameworks/iso-27001',
   },
   {
     title: 'NIST',
-    href: 'solutions/frameworks/nist',
+    href: '/solutions/frameworks/nist',
   },
   {
     title: 'PCI DSS',
-    href: '/frameworks/pci-dss',
+    href: '/solutions/frameworks/pci-dss',
+  },
+  {
+    title: 'GDPR',
+    href: '/solutions/frameworks/gdpr',
+  },
+  {
+    title: 'SOC 2',
+    href: '/solutions/frameworks/soc-2',
+  },
+  {
+    title: 'AMLA',
+    href: '/solutions/frameworks/amla',
   },
 ];
 
