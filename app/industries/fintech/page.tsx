@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { PrimaryCTA } from '@/components/primary-cta';
@@ -21,6 +22,9 @@ export const metadata: Metadata = {
 		'Fraud Monitoring',
 		'Financial Compliance',
 	],
+	alternates: {
+		canonical: '/industries/fintech',
+	},
 	openGraph: {
 		type: 'website',
 		title: 'Fintech Security & Compliance | SOC 2, GDPR, ISO 27001, AMLA, PCI DSS',
@@ -41,6 +45,33 @@ export const metadata: Metadata = {
 		description:
 			'Protect payment card data, ensure privacy, and monitor fraud with fintech-ready frameworks and automation.',
 		images: ['https://images.unsplash.com/photo-1556742393-d75f468bfcb0?w=1200&h=630&fit=crop'],
+	},
+};
+
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.enterpriserm.ai').replace(/\/+$/, '');
+const ogImages = metadata.openGraph?.images;
+let ogImageUrl: string | undefined = undefined;
+if (Array.isArray(ogImages)) {
+	const first: any = ogImages[0];
+	ogImageUrl = typeof first === 'string' ? first : first?.url;
+} else if (ogImages) {
+	const single: any = ogImages as any;
+	ogImageUrl = typeof single === 'string' ? single : single?.url;
+}
+const fintechJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'WebPage',
+	name: metadata.title,
+	description: metadata.description,
+	url: `${siteUrl}/industries/fintech`,
+	image: ogImageUrl,
+	breadcrumb: {
+		'@type': 'BreadcrumbList',
+		itemListElement: [
+			{ '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
+			{ '@type': 'ListItem', position: 2, name: 'Industries', item: `${siteUrl}/industries` },
+			{ '@type': 'ListItem', position: 3, name: 'Fintech', item: `${siteUrl}/industries/fintech` },
+		],
 	},
 };
 
@@ -129,6 +160,9 @@ export default function FintechPage() {
 			<Header />
 
 			<main>
+                <Script id="fintech-jsonld" type="application/ld+json" strategy="afterInteractive">
+                  {JSON.stringify(fintechJsonLd)}
+                </Script>
 				{/* Hero Section */}
 				<section className="relative bg-linear-to-r from-[#120174] via-[#2b1fa0] to-[#120174] text-white py-24 overflow-hidden">
 					<div className="absolute inset-0 bg-black/20"></div>

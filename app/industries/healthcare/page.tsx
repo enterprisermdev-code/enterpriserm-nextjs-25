@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { PrimaryCTA } from '@/components/primary-cta';
@@ -22,6 +23,9 @@ export const metadata: Metadata = {
     'Healthcare Compliance',
     'SOC 2 Healthcare',
   ],
+  alternates: {
+    canonical: '/industries/healthcare',
+  },
   openGraph: {
     type: 'website',
     title: 'Healthcare Risk Management | HIPAA Compliance & Security Frameworks',
@@ -42,6 +46,33 @@ export const metadata: Metadata = {
     description:
       'Streamline healthcare compliance with AI-powered risk management. HIPAA, HITRUST, NIST, and more.',
     images: ['https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=1200&h=630&fit=crop'],
+  },
+};
+
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.enterpriserm.ai').replace(/\/+$/, '');
+const ogImages = metadata.openGraph?.images;
+let ogImageUrl: string | undefined = undefined;
+if (Array.isArray(ogImages)) {
+  const first: any = ogImages[0];
+  ogImageUrl = typeof first === 'string' ? first : first?.url;
+} else if (ogImages) {
+  const single: any = ogImages as any;
+  ogImageUrl = typeof single === 'string' ? single : single?.url;
+}
+const healthcareJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: metadata.title,
+  description: metadata.description,
+  url: `${siteUrl}/industries/healthcare`,
+  image: ogImageUrl,
+  breadcrumb: {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
+      { '@type': 'ListItem', position: 2, name: 'Industries', item: `${siteUrl}/industries` },
+      { '@type': 'ListItem', position: 3, name: 'Healthcare', item: `${siteUrl}/industries/healthcare` },
+    ],
   },
 };
 
@@ -118,6 +149,9 @@ export default function HealthcarePage() {
       <Header />
       
       <main>
+        <Script id="healthcare-jsonld" type="application/ld+json" strategy="afterInteractive">
+          {JSON.stringify(healthcareJsonLd)}
+        </Script>
         {/* Hero Section */}
         <section className="relative bg-linear-to-r from-[#120174] via-[#2b1fa0] to-[#120174] text-white py-24 overflow-hidden">
           <div className="absolute inset-0 bg-black/20"></div>

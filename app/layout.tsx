@@ -15,8 +15,13 @@ const manrope = Manrope({
   subsets: ["latin"],
 });
 
+const publicSiteUrl = (
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.NODE_ENV === "production" ? "https://www.enterpriserm.ai" : "http://localhost:3000")
+).replace(/\/+$/, "");
+
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NODE_ENV === 'production' ? 'https://yourdomain.com' : 'http://localhost:3000'),
+  metadataBase: new URL(publicSiteUrl),
   title: {
     default: "Enterprise Risk Management Platform",
     template: "%s | Enterprise Risk Management Platform",

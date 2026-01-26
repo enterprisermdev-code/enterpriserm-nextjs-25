@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { PrimaryCTA } from '@/components/primary-cta';
@@ -22,6 +23,9 @@ export const metadata: Metadata = {
     'Cybersecurity Governance',
     'Information Security Management',
   ],
+  alternates: {
+    canonical: '/industries/it',
+  },
   openGraph: {
     type: 'website',
     title: 'IT Security & Risk Management | NIST, ISO 27001, SOC 2 Compliance',
@@ -42,6 +46,33 @@ export const metadata: Metadata = {
     description:
       'Streamline IT security compliance with comprehensive frameworks. NIST, ISO 27001, SOC 2, PCI DSS, and COBIT implementation.',
     images: ['https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=1200&h=630&fit=crop'],
+  },
+};
+
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.enterpriserm.ai').replace(/\/+$/, '');
+const ogImages = metadata.openGraph?.images;
+let ogImageUrl: string | undefined = undefined;
+if (Array.isArray(ogImages)) {
+  const first: any = ogImages[0];
+  ogImageUrl = typeof first === 'string' ? first : first?.url;
+} else if (ogImages) {
+  const single: any = ogImages as any;
+  ogImageUrl = typeof single === 'string' ? single : single?.url;
+}
+const itJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: metadata.title,
+  description: metadata.description,
+  url: `${siteUrl}/industries/it`,
+  image: ogImageUrl,
+  breadcrumb: {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
+      { '@type': 'ListItem', position: 2, name: 'Industries', item: `${siteUrl}/industries` },
+      { '@type': 'ListItem', position: 3, name: 'IT', item: `${siteUrl}/industries/it` },
+    ],
   },
 };
 
@@ -160,6 +191,9 @@ export default function ITPage() {
       <Header />
       
       <main>
+        <Script id="it-jsonld" type="application/ld+json" strategy="afterInteractive">
+          {JSON.stringify(itJsonLd)}
+        </Script>
         {/* Hero Section */}
         <section className="relative bg-linear-to-r from-[#120174] via-[#2b1fa0] to-[#120174] text-white py-24 overflow-hidden">
           <div className="absolute inset-0 bg-black/20"></div>

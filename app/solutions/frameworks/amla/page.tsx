@@ -23,11 +23,11 @@ import {
 } from "react-icons/fa";
 
 export const metadata: Metadata = {
-  title: "AMLA: Anti‑Money Laundering Act Overview, How to Comply, Industries, FAQs | 2026",
+  title: "AML: Anti‑Money Laundering Act Overview, How to Comply, Industries, FAQs | 2026",
   description:
-    "Understand the Anti‑Money Laundering Act (AMLA): risk‑based program requirements, KYC/CDD, beneficial ownership, transaction monitoring, SAR filing, sanctions screening, training, and independent testing.",
+    "Understand the Anti‑Money Laundering Act (AML): risk‑based program requirements, KYC/CDD, beneficial ownership, transaction monitoring, SAR filing, sanctions screening, training, and independent testing.",
   keywords: [
-    "AMLA",
+    "AML",
     "Anti-Money Laundering",
     "BSA compliance",
     "KYC",
@@ -41,9 +41,9 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: "article",
-    title: "AMLA Compliance: What It Is and How To Apply",
+    title: "AML Compliance: What It Is and How To Apply",
     description:
-      "A practical guide to AMLA: program pillars, KYC/CDD, beneficial ownership, monitoring, SARs, and ongoing governance.",
+      "A practical guide to AML: program pillars, KYC/CDD, beneficial ownership, monitoring, SARs, and ongoing governance.",
     images: [
       {
         url: "https://images.unsplash.com/photo-1517242021971-3f6b1b1b1c89?w=1200&h=630&fit=crop&auto=format&q=80",
@@ -57,9 +57,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AMLA Overview, Compliance Steps, Industries, FAQs",
+    title: "AML Overview, Compliance Steps, Industries, FAQs",
     description:
-      "Learn AMLA fundamentals and build a risk‑based AML program: KYC/CDD, ownership, monitoring, SARs, sanctions, training, and testing.",
+      "Learn AML fundamentals and build a risk‑based AML program: KYC/CDD, ownership, monitoring, SARs, sanctions, training, and testing.",
     images: [
       "https://images.unsplash.com/photo-1517242021971-3f6b1b1b1c89?w=1200&h=630&fit=crop&auto=format&q=80",
     ],
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AmlaPage() {
+export default function AMLPage() {
   const pillars = [
     { label: "Risk‑Based AML Program", desc: "Assess risks and tailor controls proportionate to exposure.", icon: FaBalanceScale },
     { label: "KYC / CDD", desc: "Know Your Customer and Customer Due Diligence processes.", icon: FaUserCheck },
@@ -100,11 +100,11 @@ export default function AmlaPage() {
   ];
 
   const faqs = [
-    { q: "What is AMLA?", a: "The Anti‑Money Laundering Act modernizes AML requirements under the Bank Secrecy Act (BSA), emphasizing risk‑based programs, beneficial ownership, technology adoption, and improved information sharing." },
-    { q: "Who must comply with AMLA?", a: "Financial institutions and covered entities, including banks, MSBs, payment processors, crypto VASPs, lenders, insurers, and certain fintech platforms, must implement AML programs proportionate to risk." },
+    { q: "What is AML?", a: "The Anti‑Money Laundering Act modernizes AML requirements under the Bank Secrecy Act (BSA), emphasizing risk‑based programs, beneficial ownership, technology adoption, and improved information sharing." },
+    { q: "Who must comply with AML?", a: "Financial institutions and covered entities, including banks, MSBs, payment processors, crypto VASPs, lenders, insurers, and certain fintech platforms, must implement AML programs proportionate to risk." },
     { q: "What are AML program pillars?", a: "Common pillars include internal controls, designated compliance officer, training, independent testing, and customer due diligence (including beneficial ownership)." },
     { q: "How do SARs work?", a: "Institutions monitor and investigate activity; if suspicious, they file a SAR within required timeframes and retain records, avoiding tipping off involved parties." },
-    { q: "How does AMLA relate to GDPR or SOC 2?", a: "AMLA focuses on financial crime controls; GDPR governs privacy rights; SOC 2 attests to security controls. Programs often intersect in data handling, monitoring, and governance." },
+    { q: "How does AML relate to GDPR or SOC 2?", a: "AML focuses on financial crime controls; GDPR governs privacy rights; SOC 2 attests to security controls. Programs often intersect in data handling, monitoring, and governance." },
   ];
 
   return (
@@ -117,9 +117,9 @@ export default function AmlaPage() {
           <div className="container mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur text-white text-sm font-semibold border border-white/30">
-                AMLA FRAMEWORK
+                AML FRAMEWORK
               </div>
-              <h1 className="text-5xl md:text-6xl font-bold leading-tight">AMLA Compliance for Financial Services</h1>
+              <h1 className="text-5xl md:text-6xl font-bold leading-tight">AML Compliance for Financial Services</h1>
               <p className="text-lg md:text-xl opacity-90 max-w-2xl">
                 Build a risk‑based AML program with effective KYC/CDD, beneficial ownership verification, transaction monitoring, SAR processes, and sanctions screening.
               </p>
@@ -143,11 +143,11 @@ export default function AmlaPage() {
           </div>
         </section>
 
-        {/* What is AMLA */}
+        {/* What is AML */}
         <section className="py-20 bg-white border-b border-gray-100">
           <div className="container mx-auto px-6">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">What is AMLA?</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">What is AML?</h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                 The Anti‑Money Laundering Act strengthens U.S. AML oversight under the BSA, promoting risk‑based programs, beneficial ownership transparency, technology‑enabled monitoring, and enhanced collaboration with regulators and law enforcement.
               </p>
@@ -169,12 +169,12 @@ export default function AmlaPage() {
           </div>
         </section>
 
-        {/* How AMLA is applied */}
+        {/* How AML is applied */}
         <section className="py-20 bg-linear-to-br from-gray-50 to-white">
           <div className="container mx-auto px-6">
             <div className="grid lg:grid-cols-2 gap-12 items-start">
               <div>
-                <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">How AMLA is Applied</h3>
+                <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">How AML is Applied</h3>
                 <p className="text-lg text-gray-600 mb-6">
                   Implement a risk‑based AML program lifecycle with governance, onboarding, monitoring, reporting, and continuous improvement.
                 </p>
@@ -210,10 +210,10 @@ export default function AmlaPage() {
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#120174]/10 rounded-full mb-6">
                 <FaIndustry className="text-[#120174]" />
-                <span className="text-sm font-semibold text-[#120174]">Industries Covered by AMLA</span>
+                <span className="text-sm font-semibold text-[#120174]">Industries Covered by AML</span>
               </div>
-              <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Who Needs AMLA Compliance</h3>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">Financial institutions and covered entities adopt AMLA requirements to detect and report suspicious activity and prevent illicit finance.</p>
+              <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Who Needs AML Compliance</h3>
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto">Financial institutions and covered entities adopt AML requirements to detect and report suspicious activity and prevent illicit finance.</p>
             </div>
             <div className="grid md:grid-cols-3 gap-6">
               {industries.map((ind) => {
