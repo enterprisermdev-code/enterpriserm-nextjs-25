@@ -81,31 +81,9 @@ export function Footer() {
             <div className="md:col-span-2">
               <h4 className="text-xs text-gray-400 font-semibold uppercase tracking-wider mb-4">Industries</h4>
               <ul className="grid grid-cols-2 gap-x-6 gap-y-2 text-gray-400 text-sm">
-                <li><Link href="/industries/aerospace-defense" className="hover:text-white">Aerospace & Defense</Link></li>
-                <li><Link href="/industries/agriculture" className="hover:text-white">Agriculture</Link></li>
-                <li><Link href="/industries/automotive" className="hover:text-white">Automotive</Link></li>
-                <li><Link href="/industries/chemical-manufacturing" className="hover:text-white">Chemical Manufacturing</Link></li>
-                <li><Link href="/industries/communication-services" className="hover:text-white">Communication Services</Link></li>
-                <li><Link href="/industries/consumer-packaged-goods" className="hover:text-white">Consumer Packaged Goods</Link></li>
-                <li><Link href="/industries/education" className="hover:text-white">Education</Link></li>
-                <li><Link href="/industries/financial-services" className="hover:text-white">Financial Services</Link></li>
+                <li><Link href="/industries/fintech" className="hover:text-white">Fintech</Link></li>
                 <li><Link href="/industries/healthcare" className="hover:text-white">Healthcare</Link></li>
-                <li><Link href="/industries/high-technology" className="hover:text-white">High Technology</Link></li>
-                <li><Link href="/industries/industrial-manufacturing" className="hover:text-white">Industrial Manufacturing</Link></li>
-                <li><Link href="/industries/insurance" className="hover:text-white">Insurance</Link></li>
-                <li><Link href="/industries/life-sciences" className="hover:text-white">Life Sciences</Link></li>
-                <li><Link href="/industries/logistics-distribution" className="hover:text-white">Logistics & Distribution</Link></li>
-                <li><Link href="/industries/media-entertainment" className="hover:text-white">Media and Entertainment</Link></li>
-                <li><Link href="/industries/mining" className="hover:text-white">Mining</Link></li>
-                <li><Link href="/industries/oil-gas" className="hover:text-white">Oil and Gas</Link></li>
-                <li><Link href="/industries/private-equity" className="hover:text-white">Private Equity</Link></li>
-                <li><Link href="/industries/professional-services" className="hover:text-white">Professional Services</Link></li>
-                <li><Link href="/industries/public-sector" className="hover:text-white">Public Sector</Link></li>
-                <li><Link href="/industries/retail" className="hover:text-white">Retail</Link></li>
-                <li><Link href="/industries/semiconductor" className="hover:text-white">Semiconductor</Link></li>
-                <li><Link href="/industries/travel-hospitality" className="hover:text-white">Travel and Hospitality</Link></li>
-                <li><Link href="/industries/utilities" className="hover:text-white">Utilities</Link></li>
-                <li><Link href="/industries/waste-management" className="hover:text-white">Waste Management</Link></li>
+                <li><Link href="/industries/it" className="hover:text-white">IT Security & Risk</Link></li>
               </ul>
             </div>
           </div>
@@ -120,6 +98,8 @@ export function Footer() {
             <Link href="/contents/privacy-policy" className="hover:text-white">Privacy Policy</Link>
             <span className="opacity-40">•</span>
             <Link href="/contents/cookie-notice" className="hover:text-white">Cookie Notice</Link>
+            <span className="opacity-40">•</span>
+            <Link href="/careers" className="hover:text-white">Careers</Link>
           </div>
         </div>
       </div>
