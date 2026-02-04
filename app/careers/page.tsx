@@ -7,8 +7,6 @@ import { Button } from '@/components/ui/button';
 import {
   BriefcaseBusiness,
   Sparkles,
-  Users,
-  Rocket,
   ShieldCheck,
   CalendarCheck,
   User,
@@ -20,43 +18,34 @@ import {
   AlertCircle
 } from 'lucide-react';
 
-const cultureHighlights = [
-  {
-    title: 'Mission-Driven Innovation',
-    description: 'Ship AI-powered governance features that help enterprises stay ahead of regulatory change and emerging risk.',
-    icon: Rocket
-  },
-  {
-    title: 'People-First Culture',
-    description: 'Work with a collaborative, global team that celebrates curiosity, impact, and healthy work-life balance.',
-    icon: Users
-  },
-  {
-    title: 'Growth Mindset',
-    description: 'Access mentorship, learning stipends, and leadership programs tailored to your long-term goals.',
-    icon: Sparkles
-  }
+// Content updated per request: roles, skills, opportunities, and why-join
+const roles = [
+  'GRC Implementation Consultants',
+  'Enterprise Risk Management (ERM) Professionals',
+  'Third-Party Risk Management (TPRM) Specialists',
+  'Vendor Risk & Due Diligence Analysts',
+  'Information Security & Compliance Auditors',
+  'Internal / External IT Auditors',
+  'Risk & Compliance Analysts',
+  'Security Assurance & Control Testing Professionals'
 ];
 
-const jobOpenings = [
-  {
-    title: 'Senior AI Risk Analyst',
-    location: 'Remote · North America',
-    type: 'Full-time',
-    summary: 'Model new risk scenarios, guide customers on mitigation strategies, and collaborate with product to shape the roadmap.'
-  },
-  {
-    title: 'GRC Solutions Consultant',
-    location: 'Hybrid · London, UK',
-    type: 'Full-time',
-    summary: 'Lead enterprise discovery calls, translate compliance needs into technical solutions, and accelerate customer onboarding.'
-  },
-  {
-    title: 'Senior Frontend Engineer',
-    location: 'Remote · Americas',
-    type: 'Full-time',
-    summary: 'Craft delightful dashboards, performance-tune complex data visualizations, and elevate component accessibility.'
-  }
+const skills = [
+  'GRC program design and implementation',
+  'Risk assessments and risk treatment planning',
+  'Third-party/vendor risk assessments',
+  'Regulatory and framework alignment (ISO 27001, SOC 1/2, NIST, PCI DSS, GDPR, etc.)',
+  'Control design, testing, and evidence management',
+  'Audit planning, execution, and reporting',
+  'Stakeholder and client engagement'
+];
+
+const whyJoin = [
+  'Work on real-world GRC and risk challenges',
+  'Exposure to multiple industries and clients',
+  'Opportunity to grow with a product-based GRC company',
+  'Flexible engagement models (internal & client-facing roles)',
+  'Collaborative, risk-focused, and growth-driven culture'
 ];
 
 const hiringSteps = [
@@ -204,13 +193,16 @@ export default function CareersPage() {
               <div>
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full mb-6 backdrop-blur">
                   <BriefcaseBusiness className="h-4 w-4" />
-                  <span className="text-sm font-semibold uppercase tracking-widest">Careers at EnterpriseRM.ai</span>
+                  <span className="text-sm font-semibold uppercase tracking-widest">Careers at EnterpriseRM</span>
                 </div>
                 <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
-                  Build the Future of AI-Governed Risk Intelligence
+                  Build the Future of GRC & Risk Management
                 </h1>
                 <p className="text-lg md:text-xl text-blue-100 mb-8">
-                  Join a product-led team helping the world&apos;s most regulated industries move fast, stay compliant, and manage risk with confidence.
+                  At EnterpriseRM, we are a product-based company and staffing augmentation partner focused on solving real-world challenges in Governance, Risk, and Compliance (GRC). We help enterprises design, implement, and scale effective risk and compliance programs—supported by strong technology and experienced professionals.
+                </p>
+                <p className="text-lg md:text-xl text-blue-100 mb-8">
+                  We are continuously expanding our internal teams and our client delivery capabilities. If you are an experienced GRC professional looking to work on meaningful, high-impact engagements, we’d love to hear from you.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button
@@ -224,7 +216,7 @@ export default function CareersPage() {
                     variant="outline"
                     className="rounded-full border-white/30 text-white hover:bg-white/10 text-base font-semibold px-8 py-6"
                   >
-                    <a href="#life">Life at EnterpriseRM</a>
+                    <a href="#life">Who We Are Looking For</a>
                   </Button>
                 </div>
               </div>
@@ -255,30 +247,56 @@ export default function CareersPage() {
 
         <section id="life" className="py-20 bg-white">
           <div className="container mx-auto px-6">
-            <div className="text-center mb-16">
+            <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#120174]/10 text-[#120174] rounded-full mb-6">
                 <Sparkles className="h-4 w-4" />
-                <span className="text-sm font-semibold">Life at EnterpriseRM.ai</span>
+                <span className="text-sm font-semibold">Who We Are Looking For</span>
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Where Purpose Meets Opportunity</h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                We empower specialists across engineering, design, data science, and risk disciplines to do their most meaningful work—while staying grounded in measurable outcomes for our customers.
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Experienced GRC & Risk Professionals</h2>
+              <p className="text-lg text-gray-600 max-w-4xl mx-auto mt-4">
+                We welcome experienced professionals across the GRC and Risk Management spectrum, including but not limited to:
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {cultureHighlights.map(({ title, description, icon: Icon }) => (
-                <div
-                  key={title}
-                  className="group rounded-2xl border border-gray-100 bg-linear-to-br from-white via-white to-gray-50 p-8 shadow-sm hover:-translate-y-2 hover:shadow-lg transition-all"
-                >
-                  <div className="w-14 h-14 rounded-xl bg-linear-to-br from-[#0ea5ff] to-[#4ade80] flex items-center justify-center text-white mb-6">
-                    <Icon className="h-7 w-7" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">{title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{description}</p>
-                </div>
-              ))}
+            <div className="max-w-4xl mx-auto">
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">GRC & Risk Roles</h3>
+              <ul className="list-disc pl-6 space-y-2 text-gray-700">
+                {roles.map(item => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+
+              <hr className="my-12 border-gray-200" />
+
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Key Skills & Experience</h3>
+              <p className="text-gray-600 mb-4">We’re interested in professionals with experience in areas such as:</p>
+              <ul className="list-disc pl-6 space-y-2 text-gray-700">
+                {skills.map(item => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+
+              <hr className="my-12 border-gray-200" />
+
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Internal & Client Opportunities</h3>
+              <ul className="list-disc pl-6 space-y-3 text-gray-700">
+                <li>
+                  <span className="font-medium">Internal Roles:</span> Be part of our core team building and scaling GRC solutions and products
+                </li>
+                <li>
+                  <span className="font-medium">Client Engagements:</span> Work on short-term or long-term assignments with leading enterprises through our staffing augmentation model
+                </li>
+              </ul>
+              <p className="text-gray-600 mt-4">If your skills match our current or upcoming requirements, our team will connect with you to discuss suitable opportunities.</p>
+
+              <hr className="my-12 border-gray-200" />
+
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Why Join EnterpriseRM?</h3>
+              <ul className="list-disc pl-6 space-y-2 text-gray-700">
+                {whyJoin.map(item => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
             </div>
           </div>
         </section>
@@ -291,11 +309,11 @@ export default function CareersPage() {
                 <div>
                   <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#120174]/10 text-[#120174] rounded-full mb-6">
                     <ShieldCheck className="h-4 w-4" />
-                    <span className="text-sm font-semibold">Our Hiring Journey</span>
+                    <span className="text-sm font-semibold">Apply Now</span>
                   </div>
                   <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Your Next Chapter Starts Here</h2>
                   <p className="text-lg text-gray-600">
-                    We keep hiring intentional, transparent, and human. Expect prompt updates, thoughtful conversations, and a team invested in your success from hello to onboarding.
+                    If you are an experienced GRC professional and passionate about risk, compliance, and security, feel free to apply. Our hiring team will review your profile, and if there’s a match, we’ll connect with you.
                   </p>
                 </div>
 
@@ -317,7 +335,7 @@ export default function CareersPage() {
               <div className="bg-white border border-gray-200 shadow-2xl rounded-3xl p-8 md:p-10">
                 <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">Apply in Minutes</h3>
                 <p className="text-gray-600 mb-8">
-                  Share your details and resume. Our talent team reviews every application and responds within five business days.
+                  Share your details and resume. Our team reviews every application and responds promptly.
                 </p>
 
                 {submitStatus === 'success' && (
@@ -364,7 +382,7 @@ export default function CareersPage() {
 
                   <div>
                     <label htmlFor="email" className="mb-2 block text-sm font-semibold text-gray-700">
-                      Work Email <span className="text-red-500">*</span>
+                       Email <span className="text-red-500">*</span>
                     </label>
                     <div className="relative">
                       <div className="pointer-events-none absolute inset-y-0 left-4 flex items-center text-gray-400">
@@ -459,7 +477,7 @@ export default function CareersPage() {
                   </Button>
 
                   <p className="text-xs text-gray-500 text-center">
-                    Need accommodations during the hiring process? Email careers@enterpriserm.ai and we&apos;ll support you.
+                    Need accommodations during the hiring process? Email connect@enterpriserm.ai and we&apos;ll support you.
                   </p>
                 </form>
               </div>
