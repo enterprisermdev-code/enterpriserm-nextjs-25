@@ -65,7 +65,7 @@ export function Header() {
             <Link href="/" className="inline-flex items-center shrink-0">
               <img src="/bluelogo.svg" alt="EnterpriseRM.ai" className="h-7 w-auto" />
             </Link>
-            
+
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-1">
               <Link href="/" className="relative px-4 py-2 rounded-full text-sm font-semibold text-gray-700 hover:text-[#120174] transition-all duration-200 group">
@@ -92,7 +92,7 @@ export function Header() {
                 </button>
                 <MegaMenu open={menuOpen} />
               </div>
-              
+
               <div
                 className="relative group"
                 onMouseEnter={handleIndustriesEnter}
@@ -113,7 +113,7 @@ export function Header() {
                 </button>
                 <IndustriesMenu open={industriesOpen} />
               </div>
-              
+
               <div
                 className="relative group"
                 onMouseEnter={handleResourcesEnter}
@@ -133,11 +133,10 @@ export function Header() {
                   </svg>
                 </button>
                 <div
-                  className={`absolute left-0 top-full mt-3 w-64 rounded-2xl border border-gray-200/50 bg-white/98 backdrop-blur-xl shadow-xl transition-all duration-300 origin-top ${
-                    resourcesOpen
+                  className={`absolute left-0 top-full mt-3 w-64 rounded-2xl border border-gray-200/50 bg-white/98 backdrop-blur-xl shadow-xl transition-all duration-300 origin-top ${resourcesOpen
                       ? 'pointer-events-auto scale-100 opacity-100 translate-y-0'
                       : 'pointer-events-none scale-95 opacity-0 -translate-y-4'
-                  }`}
+                    }`}
                   role="menu"
                   aria-hidden={!resourcesOpen}
                 >
@@ -167,39 +166,43 @@ export function Header() {
                   </div>
                 </div>
               </div>
-              
+
+              <Link href="/careers" className="relative px-4 py-2 rounded-full text-sm font-semibold text-gray-700 hover:text-[#120174] transition-all duration-200 group">
+                <span className="relative z-10">Careers</span>
+                <span className="absolute inset-0 rounded-full bg-gray-100/0 group-hover:bg-gray-100/80 transition-all duration-200"></span>
+              </Link>
+
               <Link href="/contact" className="relative px-4 py-2 rounded-full text-sm font-semibold text-gray-700 hover:text-[#120174] transition-all duration-200 group">
                 <span className="relative z-10">Contact Us</span>
                 <span className="absolute inset-0 rounded-full bg-gray-100/0 group-hover:bg-gray-100/80 transition-all duration-200"></span>
               </Link>
             </nav>
-            
+
             {/* Desktop Action Buttons */}
             <div className="hidden lg:flex items-center gap-2">
-              <Button variant="ghost" className="text-gray-700 hover:text-[#120174] hover:bg-gray-100/80 rounded-full px-5">
-                Login
-              </Button>
-              <Button className="bg-[#120174] hover:bg-[#0d0050] text-white px-6 rounded-full transition-all duration-200 shadow-md hover:shadow-lg">
-                Sign Up
-              </Button>
+              <a href="/contact">
+                <Button className="bg-[#120174] hover:bg-[#0d0050] text-white px-6 rounded-full transition-all duration-200 shadow-md hover:shadow-lg">
+                  Request a Demo
+                </Button>
+              </a>
             </div>
 
-          {/* Mobile Menu Button */}
-          <button 
-            className="lg:hidden inline-flex items-center justify-center p-2 rounded-full text-gray-700 hover:bg-gray-100/80 transition-colors"
-            onClick={() => {
-              const next = !mobileMenuOpen;
-              setMobileMenuOpen(next);
-              if (!next) {
-                setMobileFeaturesOpen(false);
-                setMobileIndustriesOpen(false);
-                setMobileResourcesOpen(false);
-              }
-            }}
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
+            {/* Mobile Menu Button */}
+            <button
+              className="lg:hidden inline-flex items-center justify-center p-2 rounded-full text-gray-700 hover:bg-gray-100/80 transition-colors"
+              onClick={() => {
+                const next = !mobileMenuOpen;
+                setMobileMenuOpen(next);
+                if (!next) {
+                  setMobileFeaturesOpen(false);
+                  setMobileIndustriesOpen(false);
+                  setMobileResourcesOpen(false);
+                }
+              }}
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
           </div>
         </div>
 
@@ -213,7 +216,7 @@ export function Header() {
                     Home
                   </Link>
                   <div>
-                    <button 
+                    <button
                       onClick={() => setMobileFeaturesOpen(!mobileFeaturesOpen)}
                       className="w-full flex items-center justify-between px-5 py-3 rounded-2xl text-sm font-semibold text-gray-700 hover:text-[#120174] hover:bg-linear-to-r hover:from-gray-50 hover:to-white transition-all duration-200"
                     >
@@ -329,18 +332,20 @@ export function Header() {
                   <Link href="/about" className="block px-5 py-3 rounded-2xl text-sm font-semibold text-gray-700 hover:text-[#120174] hover:bg-linear-to-r hover:from-gray-50 hover:to-white transition-all duration-200">
                     About Us
                   </Link>
+                  <Link href="/careers" className="block px-5 py-3 rounded-2xl text-sm font-semibold text-gray-700 hover:text-[#120174] hover:bg-linear-to-r hover:from-gray-50 hover:to-white transition-all duration-200">
+                    Careers
+                  </Link>
                   <Link href="/contact" className="block px-5 py-3 rounded-2xl text-sm font-semibold text-gray-700 hover:text-[#120174] hover:bg-linear-to-r hover:from-gray-50 hover:to-white transition-all duration-200">
                     Contact Us
                   </Link>
                 </div>
                 <div className="p-5 pt-3 bg-linear-to-br from-gray-50/30 to-white border-t border-gray-100">
                   <div className="flex flex-col gap-2.5">
-                    <Button variant="ghost" className="w-full justify-center text-gray-700 hover:text-[#120174] hover:bg-white rounded-2xl font-semibold h-11">
-                      Login
-                    </Button>
+                    <a href="/contact">
                     <Button className="w-full bg-[#120174] hover:bg-[#0d0050] text-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-200 font-semibold h-11">
-                      Sign Up
+                      Request a Demo
                     </Button>
+                    </a>
                   </div>
                 </div>
               </div>

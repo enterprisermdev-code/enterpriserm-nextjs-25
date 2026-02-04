@@ -18,36 +18,40 @@ import { Shield, TrendingUp, Clock, Users, CheckCircle, Star, ArrowRight, Globe,
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'AI-Powered Enterprise Risk Management & GRC Platform | 2026',
+  title: 'EnterpriseRM.ai - Enterprise Risk Management Software',
   description:
-    'Transform enterprise risk management with AI automation. Support for 35+ compliance frameworks (HIPAA, SOC 2, NIST, ISO 27001). Real-time risk assessment, predictive analytics, and automated compliance monitoring.',
-  keywords: [
-    'Enterprise Risk Management 2026',
-    'AI-powered GRC platform',
-    'automated risk assessment',
-    'predictive risk analytics',
-    'HIPAA compliance automation',
-    'SOC 2 compliance platform',
-    'NIST cybersecurity framework',
-    'ISO 27001 management',
-    'real-time compliance monitoring',
-    'enterprise security automation',
-    'AI governance platform',
-    'regulatory compliance software',
-    'risk intelligence platform',
-    'continuous compliance monitoring',
-  ],
+    'Automate enterprise risk management in minutes. 89% faster assessments, 35+ compliance frameworks, AI-powered insights. Trusted by 25K+ teams. Start free trial.',
+  authors: [{ name: 'EnterpriseRM.ai Team' }],
+  creator: 'EnterpriseRM.ai',
+  publisher: 'EnterpriseRM.ai',
+  applicationName: 'EnterpriseRM.ai Platform',
+  metadataBase: new URL('https://www.enterpriserm.ai'),
+  alternates: {
+    canonical: '/',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
     type: 'website',
-    title: 'AI-Powered Enterprise Risk Management & GRC Platform | 2026',
+    title: 'EnterpriseRM.ai - Enterprise Risk Management Software',
     description:
-      'Transform risk management with AI automation. 35+ compliance frameworks, real-time monitoring, predictive analytics. Trusted by leading enterprises.',
+      'Automate enterprise risk management in minutes. 89% faster assessments, 35+ compliance frameworks, AI-powered insights. Trusted by 25K+ teams.',
+    url: 'https://www.enterpriserm.ai',
     images: [
       {
-        url: '/homebannersideimage.svg',
+        url: '/og-enterpriserm-dashboard.jpg', // Placeholder for upcoming JPG
         width: 1200,
         height: 630,
-        alt: 'AI-Powered Enterprise Risk Management Platform Dashboard',
+        alt: 'EnterpriseRM.ai platform dashboard showing real-time risk assessment and compliance monitoring',
       },
     ],
     siteName: 'EnterpriseRM.ai',
@@ -55,15 +59,98 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI-Powered Enterprise Risk Management & GRC Platform | 2026',
+    title: 'EnterpriseRM.ai - Enterprise Risk Management Software',
     description:
-      'Transform risk management with AI automation. 35+ compliance frameworks, real-time monitoring, predictive analytics.',
-    images: ['/homebannersideimage.svg'],
+      'Automate enterprise risk management in minutes. 89% faster assessments, 35+ compliance frameworks.',
+    images: ['/og-enterpriserm-dashboard.jpg'],
     creator: '@EnterpriseRMAI',
+    site: '@EnterpriseRMAI',
   },
 };
 
 export default function Home() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'What is enterprise risk management software?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Enterprise risk management (ERM) software helps organizations identify, assess, and mitigate risks across their operations. EnterpriseRM.ai automates this process using AI to provide real-time insights and ensure compliance with frameworks like SOC 2, ISO 27001, and HIPAA.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How does AI improve risk management?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'AI improves risk management by analyzing vast amounts of data to predict potential threats, automate routine compliance checks, and provide actionable insights, reducing manual effort by up to 89% and increasing assessment accuracy.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Which compliance frameworks does EnterpriseRM.ai support?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'EnterpriseRM.ai supports over 35 compliance frameworks, including SOC 2, ISO 27001, HIPAA, GDPR, NIST, PCI DSS, and industry-specific regulations, simplifying the path to certification.',
+        },
+      },
+    ],
+  };
+
+  const orgJsonLd = {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Organization',
+          '@id': 'https://www.enterpriserm.ai/#organization',
+          name: 'EnterpriseRM.ai',
+          url: 'https://www.enterpriserm.ai',
+          logo: {
+            '@type': 'ImageObject',
+            url: 'https://www.enterpriserm.ai/bluelogo.svg',
+          },
+          description: 'Leading AI-powered Enterprise Risk Management and GRC platform provider.',
+          contactPoint: {
+            '@type': 'ContactPoint',
+            contactType: 'sales',
+            availableLanguage: ['English'],
+          },
+          sameAs: [
+            'https://twitter.com/EnterpriseRMAI',
+            'https://www.linkedin.com/company/enterpriserm-ai',
+          ],
+        },
+        {
+          '@type': 'SoftwareApplication',
+          name: 'EnterpriseRM.ai Platform',
+          applicationCategory: 'BusinessApplication',
+          operatingSystem: 'Cloud-based',
+          description: 'AI-driven GRC platform for automated risk assessment and compliance monitoring.',
+          url: 'https://www.enterpriserm.ai',
+          publisher: {
+            '@id': 'https://www.enterpriserm.ai/#organization',
+          },
+          offers: {
+            '@type': 'Offer',
+            price: '0',
+            priceCurrency: 'USD',
+            availability: 'https://schema.org/InStock',
+          },
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: '4.8',
+            ratingCount: '124',
+            bestRating: '5',
+            worstRating: '1',
+          },
+          featureList: 'AI-Powered Risk Assessment, Automated Compliance Monitoring, Third-Party Risk Management',
+        },
+      ],
+    };
+
   const industryStats = [
     { value: '35+', label: 'Compliance Frameworks', icon: Shield },
     { value: '89%', label: 'Faster Risk Assessment', icon: TrendingUp },
@@ -105,9 +192,32 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
       <main>
         <HeroSection />
+
+        {/* Introduction Section for SEO */}
+        <section className="py-12 bg-white">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="max-w-4xl mx-auto text-center">
+                    <h2 className="text-2xl font-bold text-gray-900 mb-4">Transforming Enterprise Risk Management with AI</h2>
+                    <p className="text-gray-600 mb-4">
+                        EnterpriseRM.ai is the leading <strong>enterprise risk management software</strong> designed to strictly automate compliance workflows and risk assessments. In today’s rapidly evolving digital landscape, organizations face increasing regulatory pressure and complex security threats. Our platform leverages advanced artificial intelligence to provide real-time risk visibility, automated control monitoring, and predictive threat intelligence.
+                    </p>
+                    <p className="text-gray-600">
+                        Whether you are navigating <Link href="/solutions/frameworks/soc-2" className="text-[#120174] hover:underline">SOC 2 compliance</Link>, preparing for an <Link href="/solutions/frameworks/iso-27001" className="text-[#120174] hover:underline">ISO 27001 audit</Link>, or ensuring <Link href="/solutions/frameworks/gdpr" className="text-[#120174] hover:underline">GDPR data privacy</Link>, our GRC platform streamlines the entire process. Replace disparate spreadsheets and manual emails with a centralized, intelligent solution that empowers your security and compliance teams to focus on strategic initiatives rather than administrative tasks.
+                    </p>
+                </div>
+            </div>
+        </section>
         
         {/* Enhanced Stats Section */}
         <section className="py-16 bg-white border-b border-gray-100">
@@ -153,7 +263,7 @@ export default function Home() {
                 <span className="bg-linear-to-r from-[#0ea5ff] to-[#4ade80] bg-clip-text text-transparent"> Frameworks</span>
               </h2>
               <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-12">
-                Across information security, data privacy, AI governance, and industry-specific regulations
+                Across <Link href="/solutions/frameworks/iso-27001" className="hover:text-[#120174] underline decoration-gray-300 underline-offset-4 transition-all">information security</Link>, <Link href="/solutions/frameworks/gdpr" className="hover:text-[#120174] underline decoration-gray-300 underline-offset-4 transition-all">data privacy</Link>, <Link href="/solutions/frameworks/nist" className="hover:text-[#120174] underline decoration-gray-300 underline-offset-4 transition-all">AI governance</Link>, and industry-specific regulations
               </p>
             </div>
 
@@ -166,14 +276,7 @@ export default function Home() {
               ))}
             </div>
 
-            <div className="text-center">
-              <Link href="/contact">
-                <Button className="bg-[#120174] hover:bg-[#1a0a8a] text-white px-8 py-6 rounded-full text-lg font-semibold group">
-                  See All Frameworks
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
-            </div>
+            
           </div>
         </section>
 
@@ -241,6 +344,35 @@ export default function Home() {
         <CoreCapabilities />
         <WhyUsSection />
         <FeaturesOverview />
+
+         {/* FAQ Section */}
+         <section className="py-20 bg-white border-t border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                Frequently Asked Questions
+              </h2>
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                Common questions about our Enterprise Risk Management Platform
+              </p>
+            </div>
+            
+            <div className="max-w-3xl mx-auto space-y-6">
+              <div className="bg-gray-50 rounded-2xl p-6">
+                <h3 className="text-lg font-bold text-gray-900 mb-2">What is enterprise risk management software?</h3>
+                <p className="text-gray-600">Enterprise risk management (ERM) software is a specialized tool that helps organizations identify, assess, evaluate, treat, and monitor risks across all business units. EnterpriseRM.ai enhances this with AI to automate data collection and analysis.</p>
+              </div>
+              <div className="bg-gray-50 rounded-2xl p-6">
+                <h3 className="text-lg font-bold text-gray-900 mb-2">How can AI automate compliance?</h3>
+                <p className="text-gray-600">Our platform connects directly to your cloud infrastructure and SaaS tools to automatically gather evidence, monitor controls, and map findings to specific framework requirements like SOC 2 and ISO 27001, replacing manual screenshots and spreadsheets.</p>
+              </div>
+              <div className="bg-gray-50 rounded-2xl p-6">
+                <h3 className="text-lg font-bold text-gray-900 mb-2">Is the platform suitable for small businesses?</h3>
+                <p className="text-gray-600">Yes, EnterpriseRM.ai is scalable. We work with startups laying their compliance foundation as well as large enterprises managing complex, multi-framework environments.</p>
+              </div>
+            </div>
+          </div>
+        </section>
         
         {/* Industry Recognition Section */}
         <section className="py-20 bg-gray-50">

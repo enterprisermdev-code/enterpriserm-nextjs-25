@@ -11,47 +11,47 @@ export type MenuItem = {
 const solutions: MenuItem[] = [
   {
     title: 'Enterprise GRC',
-    href: '/solutions/enterprise-grc',
+    href: '/industries/fintech',
     icon: <Building2 className="w-4 h-4" />,
   },
   {
     title: 'Integrated Risk Management',
-    href: '/solutions/integrated-risk-management',
+    href: '/industries/healthcare',
     icon: <Shield className="w-4 h-4" />,
   },
   {
     title: 'Cybersecurity Risk Management',
-    href: '/solutions/cybersecurity-risk',
+    href: '/industries/it',
     icon: <Lock className="w-4 h-4" />,
   },
   {
     title: 'Corporate Compliance',
-    href: '/solutions/corporate-compliance',
+    href: '/industries/fintech',
     icon: <FileCheck className="w-4 h-4" />,
   },
   {
     title: 'Supplier Risk and Performance',
-    href: '/solutions/supplier-risk',
+    href: '/industries/fintech',
     icon: <Users className="w-4 h-4" />,
   },
   {
     title: 'DORA',
-    href: '/solutions/dora',
+    href: '/industries/healthcare',
     icon: <Sparkles className="w-4 h-4" />,
   },
   {
     title: 'UK SOX Compliance',
-    href: '/solutions/uk-sox',
+    href: '/industries/healthcare',
     icon: <FileCheck className="w-4 h-4" />,
   },
   {
     title: 'Privacy Compliance',
-    href: '/solutions/privacy-compliance',
+    href: '/industries/healthcare',
     icon: <Shield className="w-4 h-4" />,
   },
   {
     title: 'IDW PS 340 n.F.',
-    href: '/solutions/idw-ps-340',
+    href: '/industries/fintech',
     icon: <FileCheck className="w-4 h-4" />,
   },
 ];
@@ -111,7 +111,7 @@ export function MegaMenu({ open }: { open: boolean }) {
               </div>
               <ul className="space-y-0.5">
                 {section.items.map((item) => (
-                  <li key={item.href}>
+                  <li key={item.title}>
                     <Link
                       href={item.href}
                       className="group block rounded-lg px-3 py-2 transition-all duration-200 hover:bg-gradient-to-r hover:from-[#f8f7fa] hover:to-white hover:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#120174] focus-visible:ring-offset-2"

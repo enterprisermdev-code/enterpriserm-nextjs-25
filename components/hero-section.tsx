@@ -10,16 +10,13 @@ export function HeroSection() {
           {/* Left Content */}
           <div className="space-y-6">
             <h1 className="text-5xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                Enterprise Risk Management
-                <br />
-                Simplified
+                Enterprise Risk Management Software
+                
             </h1>
             
-            <p className="text-base text-gray-900 max-w-xl">
-              Move beyond spreadsheets with a unified, AI-powered platform that
-              identifies, assesses, and mitigates risks in real time. Empower your
-              teams with actionable insights, seamless collaboration, and
-              complete regulatory compliance.
+            <p className="text-lg text-gray-700 max-w-xl">
+              Automate your compliance journey with our enterprise risk management software. 
+              Reduce risk assessment time by 89% and ensure continuous compliance with SOC 2, ISO 27001, HIPAA, and more using our AI-driven GRC platform.
             </p>
             
             <div>
