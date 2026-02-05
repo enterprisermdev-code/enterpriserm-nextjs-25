@@ -152,20 +152,31 @@ export default function CareersPage() {
         payload.append('resume', formData.resume);
       }
 
-      // TODO: Swap simulated delay with actual POST to careers API endpoint when available.
-      await new Promise(resolve => setTimeout(resolve, 1500));
-
-      setSubmitStatus('success');
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        resume: null
+      const response = await fetch('/api/careers', {
+        method: 'POST',
+        body: payload
       });
-      setFileError('');
-      formRef.current?.reset();
-      if (fileInputRef.current) {
-        fileInputRef.current.value = '';
+
+      const data = await response.json().catch(() => undefined);
+
+      if (response.ok && data?.success) {
+        setSubmitStatus('success');
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          resume: null
+        });
+        setFileError('');
+        formRef.current?.reset();
+        if (fileInputRef.current) {
+          fileInputRef.current.value = '';
+        }
+      } else {
+        setSubmitStatus('error');
+        if (data?.message) {
+          setFileError(data.message);
+        }
       }
     } catch (error) {
       console.error('Careers form submission failed', error);
@@ -417,7 +428,7 @@ export default function CareersPage() {
                         value={formData.phone}
                         onChange={handleInputChange}
                         placeholder="+1 (555) 867-5309"
-                        pattern="[0-9+\-\s()]*"
+                        pattern="^[0-9+()\\s-]*$"
                         className="w-full rounded-xl border border-gray-200 bg-gray-50 pl-12 pr-4 py-3 text-gray-900 shadow-inner focus:border-[#0ea5ff] focus:outline-none focus:ring-2 focus:ring-[#0ea5ff]/40 transition"
                       />
                     </div>
@@ -433,7 +444,6 @@ export default function CareersPage() {
                         name="resume"
                         type="file"
                         accept=".pdf,application/pdf"
-                        required
                         onChange={handleFileChange}
                         ref={fileInputRef}
                         className="hidden"
