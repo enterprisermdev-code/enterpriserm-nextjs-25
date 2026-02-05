@@ -428,7 +428,7 @@ export default function CareersPage() {
                         value={formData.phone}
                         onChange={handleInputChange}
                         placeholder="+1 (555) 867-5309"
-                        pattern="^[0-9+()\\s-]*$"
+                        pattern="^[0-9 ()+-]*$"
                         className="w-full rounded-xl border border-gray-200 bg-gray-50 pl-12 pr-4 py-3 text-gray-900 shadow-inner focus:border-[#0ea5ff] focus:outline-none focus:ring-2 focus:ring-[#0ea5ff]/40 transition"
                       />
                     </div>
