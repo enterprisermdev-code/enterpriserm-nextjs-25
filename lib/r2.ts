@@ -53,8 +53,20 @@ export async function uploadToR2(options: UploadToR2Options): Promise<UploadToR2
     Body: options.body,
     ContentType: options.contentType,
   });
-
-  await client.send(command);
+  try {
+    await client.send(command);
+  } catch (err) {
+    // Surface detailed context without leaking credentials
+    const meta = {
+      bucket,
+      key: options.key,
+      name: (err as any)?.name,
+      code: (err as any)?.code,
+      message: (err as any)?.message,
+    };
+    console.error('R2 upload failed', meta);
+    throw new Error(`R2 upload failed: ${meta.code || meta.name || 'unknown error'}`);
+  }
 
   const publicBase = process.env.R2_PUBLIC_BASE_URL;
   const publicUrl = publicBase

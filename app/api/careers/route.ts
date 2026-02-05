@@ -66,8 +66,14 @@ export async function POST(request: NextRequest) {
       resumeUrl: uploadResult.publicUrl,
     });
   } catch (error: unknown) {
-    console.error('Careers submission failed', error);
     const message = error instanceof Error ? error.message : 'Unexpected server error.';
+    const details = {
+      name: (error as any)?.name,
+      code: (error as any)?.code,
+      cause: (error as any)?.cause,
+      message,
+    };
+    console.error('Careers submission failed', details);
     return NextResponse.json({ success: false, message }, { status: 500 });
   }
 }
