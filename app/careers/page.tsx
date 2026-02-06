@@ -144,22 +144,44 @@ export default function CareersPage() {
     setIsSubmitting(true);
 
     try {
-      const payload = new FormData();
-      payload.append('name', formData.name);
-      payload.append('email', formData.email);
-      payload.append('phone', formData.phone);
+      // Submit to your original API for MongoDB/Cloudflare storage
+      const originalPayload = new FormData();
+      originalPayload.append('name', formData.name);
+      originalPayload.append('email', formData.email);
+      originalPayload.append('phone', formData.phone);
       if (formData.resume) {
-        payload.append('resume', formData.resume);
+        originalPayload.append('resume', formData.resume);
       }
 
-      const response = await fetch('/api/careers', {
+      const originalResponse = await fetch('/api/careers', {
         method: 'POST',
-        body: payload
+        body: originalPayload
       });
 
-      const data = await response.json().catch(() => undefined);
+      // Submit to Web3Forms for email notifications
+      const emailPayload = new FormData();
+      emailPayload.append('access_key', '5f0057f5-db73-46a0-8491-e1411b54d751');
+      emailPayload.append('name', formData.name);
+      emailPayload.append('email', formData.email);
+      emailPayload.append('phone', formData.phone);
+      emailPayload.append('subject', 'New Career Application - EnterpriseRM');
+      emailPayload.append('message', `New career application received:
+      
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Resume: ${formData.resume?.name || 'No file uploaded'}`);
 
-      if (response.ok && data?.success) {
+      const emailResponse = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: emailPayload
+      });
+
+      const originalData = await originalResponse.json().catch(() => undefined);
+      const emailData = await emailResponse.json().catch(() => undefined);
+
+      // Consider it successful if the original API (database) submission succeeds
+      if (originalResponse.ok && originalData?.success) {
         setSubmitStatus('success');
         setFormData({
           name: '',
@@ -174,8 +196,8 @@ export default function CareersPage() {
         }
       } else {
         setSubmitStatus('error');
-        if (data?.message) {
-          setFileError(data.message);
+        if (originalData?.message) {
+          setFileError(originalData.message);
         }
       }
     } catch (error) {
